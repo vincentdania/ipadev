@@ -11,8 +11,8 @@
   <div class="relative mx-auto flex min-h-[760px] max-w-[1280px] items-center px-5 py-24 lg:px-12">
     <div class="max-w-4xl">
       <p class="text-sm font-bold uppercase text-gold">Inclusive Pathway Development Initiative</p>
-      <h1 class="mt-6 font-display text-5xl font-bold leading-[1.08] md:text-7xl">Building inclusive pathways for sustainable development.</h1>
-      <p class="mt-7 max-w-2xl text-lg leading-8 text-white/85">IPADEV advances inclusive development, social justice, gender equality, and equitable access to opportunities for vulnerable and underserved populations.</p>
+      <h1 class="mt-6 font-display text-5xl font-bold leading-[1.08] md:text-7xl">{{ content.hero.title|default:"Building inclusive pathways for sustainable development." }}</h1>
+      <p class="mt-7 max-w-2xl text-lg leading-8 text-white/85">{{ content.hero.body|default:"IPADEV advances inclusive development, social justice, gender equality, and equitable access to opportunities for vulnerable and underserved populations." }}</p>
       <div class="mt-10 flex flex-wrap gap-4">
         <a class="rounded bg-gold px-6 py-4 text-sm font-extrabold text-primary transition hover:bg-[#fed488]" href="{% url 'contact' %}">Partner With Us</a>
         <a class="rounded border border-white/45 px-6 py-4 text-sm font-extrabold text-white transition hover:border-gold hover:text-gold" href="{% url 'about' %}">Mission & Vision</a>
@@ -24,11 +24,10 @@
 <section id="about" class="mx-auto grid max-w-[1280px] gap-12 px-5 py-24 lg:grid-cols-12 lg:px-12 lg:py-[120px]">
   <div class="lg:col-span-5">
     <p class="text-sm font-bold uppercase text-bronze">Our Mission</p>
-    <h2 class="mt-4 font-display text-4xl font-bold leading-tight text-primary md:text-5xl">Equal opportunity, social justice, and community empowerment</h2>
+    <h2 class="mt-4 font-display text-4xl font-bold leading-tight text-primary md:text-5xl">{{ content.home_mission.title|default:"Equal opportunity, social justice, and community empowerment" }}</h2>
   </div>
   <div class="space-y-6 text-lg leading-8 text-muted lg:col-span-6 lg:col-start-7">
-    <p>IPADEV was founded from a deep recognition that many individuals and communities remain excluded from the benefits of development, not because they lack potential, but because the systems around them were not intentionally designed to include them.</p>
-    <p>Our mission is to promote equal opportunities, social justice, and community empowerment through inclusive policies, capacity building, and advocacy for societal transformation.</p>
+    {{ content.home_mission.body|default:"IPADEV was founded from a deep recognition that many individuals and communities remain excluded from the benefits of development, not because they lack potential, but because the systems around them were not intentionally designed to include them.\n\nOur mission is to promote equal opportunities, social justice, and community empowerment through inclusive policies, capacity building, and advocacy for societal transformation."|linebreaks }}
     <a class="inline-flex items-center border-b border-gold pb-1 text-sm font-extrabold uppercase text-bronze" href="{% url 'about' %}">Read our full mission <span class="material-symbols-outlined ml-2 text-base">arrow_forward</span></a>
   </div>
 </section>
@@ -37,8 +36,8 @@
   <div class="mx-auto max-w-[1280px] px-5 lg:px-12">
     <div class="max-w-3xl">
       <p class="text-sm font-bold uppercase text-bronze">Strategic Focus</p>
-      <h2 class="mt-4 font-display text-4xl font-bold text-primary md:text-5xl">Five pathways for inclusive transformation</h2>
-      <p class="mt-5 text-lg leading-8 text-muted">IPADEV's work is driven by the understanding that sustainable development requires inclusive systems, empowered communities, responsive institutions, and equitable access to opportunities.</p>
+      <h2 class="mt-4 font-display text-4xl font-bold text-primary md:text-5xl">{{ content.home_focus.title|default:"Five pathways for inclusive transformation" }}</h2>
+      <p class="mt-5 text-lg leading-8 text-muted">{{ content.home_focus.body|default:"IPADEV's work is driven by the understanding that sustainable development requires inclusive systems, empowered communities, responsive institutions, and equitable access to opportunities." }}</p>
     </div>
     <div class="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-5">
       {% for pillar in pillars %}
@@ -64,8 +63,8 @@
   </div>
   <div class="flex flex-col justify-center lg:col-span-5 lg:col-start-8">
     <p class="text-sm font-bold uppercase text-bronze">Why IPADEV exists</p>
-    <h2 class="mt-4 font-display text-4xl font-bold leading-tight text-primary md:text-5xl">Turning inclusion gaps into practical pathways</h2>
-    <p class="mt-6 text-lg leading-8 text-muted">Many people remain unheard, underrepresented, or excluded from governance, economic participation, leadership opportunities, and social protection systems. IPADEV exists to strengthen the connection between citizens, institutions, and development processes.</p>
+    <h2 class="mt-4 font-display text-4xl font-bold leading-tight text-primary md:text-5xl">{{ content.home_why.title|default:"Turning inclusion gaps into practical pathways" }}</h2>
+    <p class="mt-6 text-lg leading-8 text-muted">{{ content.home_why.body|default:"Many people remain unheard, underrepresented, or excluded from governance, economic participation, leadership opportunities, and social protection systems. IPADEV exists to strengthen the connection between citizens, institutions, and development processes." }}</p>
   </div>
 </section>
 

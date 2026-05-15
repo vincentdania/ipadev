@@ -144,11 +144,17 @@ class GetInvolvedView(TemplateView):
 class ImpactView(TemplateView):
     template_name = "pages/impact.html"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["content"] = content_map()
+        return context
+
 
 class NewsView(TemplateView):
     template_name = "pages/news.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context["content"] = content_map()
         context["news_items"] = NEWS_ITEMS
         return context

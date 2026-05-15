@@ -8,6 +8,10 @@ from apps.engagement.api import ContactSubmissionViewSet, NewsletterSubscriberVi
 from apps.pages.api import AreaOfFocusViewSet, PageContentViewSet
 from apps.people.api import TeamMemberViewSet
 
+admin.site.site_header = "IPADEV Admin"
+admin.site.site_title = "IPADEV Admin"
+admin.site.index_title = "Website content management"
+
 router = DefaultRouter()
 router.register("content", PageContentViewSet)
 router.register("areas-of-focus", AreaOfFocusViewSet)

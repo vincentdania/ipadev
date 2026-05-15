@@ -11,24 +11,22 @@
   <div class="relative mx-auto flex min-h-[620px] max-w-[1280px] items-center px-5 py-24 lg:px-12">
     <div class="max-w-4xl">
       <p class="text-sm font-bold uppercase text-gold">Organisational profile</p>
-      <h1 class="mt-5 font-display text-5xl font-bold leading-tight md:text-7xl">Building inclusive pathways for equal opportunity.</h1>
-      <p class="mt-7 max-w-2xl text-lg leading-8 text-white/80">IPADEV is a Nigerian non-profit organization established to advance inclusive development, social justice, gender equality, and equitable access to opportunities for vulnerable and underserved populations.</p>
+      <h1 class="mt-5 font-display text-5xl font-bold leading-tight md:text-7xl">{{ content.about_intro.title|default:"Building inclusive pathways for equal opportunity." }}</h1>
+      <p class="mt-7 max-w-2xl text-lg leading-8 text-white/80">{{ content.about_intro.body|default:"IPADEV is a Nigerian non-profit organization established to advance inclusive development, social justice, gender equality, and equitable access to opportunities for vulnerable and underserved populations." }}</p>
     </div>
   </div>
 </section>
 
 <section class="mx-auto grid max-w-[1280px] gap-12 px-5 py-24 lg:grid-cols-12 lg:px-12 lg:py-[120px]">
   <div class="lg:col-span-5">
-    <h2 class="font-display text-4xl font-bold text-primary md:text-5xl">Our story: practical pathways for inclusion</h2>
+    <h2 class="font-display text-4xl font-bold text-primary md:text-5xl">{{ content.about_story.title|default:"Our story: practical pathways for inclusion" }}</h2>
     <div class="mt-8 flex items-center gap-4">
       <div class="h-px w-14 bg-gold"></div>
       <span class="text-sm font-bold uppercase text-bronze">Rooted in lived realities</span>
     </div>
   </div>
   <div class="space-y-6 text-lg leading-8 text-muted lg:col-span-6 lg:col-start-7">
-    <p>IPADEV was founded from a deep recognition that many individuals and communities remain excluded from the benefits of development, not because they lack potential, but because the systems around them were not intentionally designed to include them.</p>
-    <p>The organization works to create practical and sustainable pathways for inclusion by strengthening community voices, supporting citizen participation, promoting accountable governance, expanding opportunities for women and marginalized groups, and building institutional and community capacity for long-term social change.</p>
-    <p>IPADEV believes development becomes meaningful only when it is inclusive, participatory, and rooted in the lived realities of the people it seeks to serve.</p>
+    {{ content.about_story.body|default:"IPADEV was founded from a deep recognition that many individuals and communities remain excluded from the benefits of development, not because they lack potential, but because the systems around them were not intentionally designed to include them.\n\nThe organization works to create practical and sustainable pathways for inclusion by strengthening community voices, supporting citizen participation, promoting accountable governance, expanding opportunities for women and marginalized groups, and building institutional and community capacity for long-term social change.\n\nIPADEV believes development becomes meaningful only when it is inclusive, participatory, and rooted in the lived realities of the people it seeks to serve."|linebreaks }}
   </div>
 </section>
 

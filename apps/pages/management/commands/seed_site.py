@@ -1,5 +1,6 @@
 from django.core.management.base import BaseCommand
 
+from apps.core.models import SiteSetting
 from apps.pages.models import AreaOfFocus, PageContent
 from apps.people.models import TeamMember
 
@@ -8,6 +9,15 @@ class Command(BaseCommand):
     help = "Seed initial IPADEV content for local development or first deployment."
 
     def handle(self, *args, **options):
+        site_settings = {
+            "head_office_address": "Flat 2B1E Admiralty Estate\nAsokoro, Abuja, Nigeria",
+            "phone": "+234 706 406 2121",
+            "primary_email": "info@ipadev.ng",
+            "alternative_email": "margaret.fagboyo@ipadev.ng",
+        }
+        for name, value in site_settings.items():
+            SiteSetting.objects.update_or_create(name=name, defaults={"value": value})
+
         PageContent.objects.update_or_create(
             key="hero",
             defaults={
@@ -31,6 +41,75 @@ class Command(BaseCommand):
                 ),
             },
         )
+        page_blocks = [
+            (
+                "home_mission",
+                "Equal opportunity, social justice, and community empowerment",
+                (
+                    "IPADEV was founded from a deep recognition that many individuals and communities "
+                    "remain excluded from the benefits of development, not because they lack potential, "
+                    "but because the systems around them were not intentionally designed to include them.\n\n"
+                    "Our mission is to promote equal opportunities, social justice, and community "
+                    "empowerment through inclusive policies, capacity building, and advocacy for societal "
+                    "transformation."
+                ),
+            ),
+            (
+                "home_focus",
+                "Five pathways for inclusive transformation",
+                (
+                    "IPADEV's work is driven by the understanding that sustainable development requires "
+                    "inclusive systems, empowered communities, responsive institutions, and equitable "
+                    "access to opportunities."
+                ),
+            ),
+            (
+                "home_why",
+                "Turning inclusion gaps into practical pathways",
+                (
+                    "Many people remain unheard, underrepresented, or excluded from governance, economic "
+                    "participation, leadership opportunities, and social protection systems. IPADEV exists "
+                    "to strengthen the connection between citizens, institutions, and development processes."
+                ),
+            ),
+            (
+                "about_intro",
+                "Building inclusive pathways for equal opportunity.",
+                (
+                    "IPADEV is a Nigerian non-profit organization established to advance inclusive "
+                    "development, social justice, gender equality, and equitable access to opportunities "
+                    "for vulnerable and underserved populations."
+                ),
+            ),
+            (
+                "about_story",
+                "Our story: practical pathways for inclusion",
+                (
+                    "IPADEV was founded from a deep recognition that many individuals and communities "
+                    "remain excluded from the benefits of development, not because they lack potential, "
+                    "but because the systems around them were not intentionally designed to include them.\n\n"
+                    "The organization works to create practical and sustainable pathways for inclusion by "
+                    "strengthening community voices, supporting citizen participation, promoting accountable "
+                    "governance, expanding opportunities for women and marginalized groups, and building "
+                    "institutional and community capacity for long-term social change.\n\n"
+                    "IPADEV believes development becomes meaningful only when it is inclusive, participatory, "
+                    "and rooted in the lived realities of the people it seeks to serve."
+                ),
+            ),
+            (
+                "contact_intro",
+                "Start a strategic conversation",
+                (
+                    "Have questions, feedback, or a partnership idea? Reach out and our team will get back "
+                    "to you as soon as possible."
+                ),
+            ),
+        ]
+        for key, title, body in page_blocks:
+            PageContent.objects.update_or_create(
+                key=key,
+                defaults={"title": title, "body": body, "is_published": True},
+            )
         PageContent.objects.update_or_create(
             key="areas_background",
             defaults={

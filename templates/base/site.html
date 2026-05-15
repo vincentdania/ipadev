@@ -104,10 +104,10 @@
       </div>
       <div>
         <h2 class="text-xs font-bold uppercase text-gold">Head Office</h2>
-        <p class="mt-5 text-sm leading-7 text-white/75">Flat 2B1E Admiralty Estate<br>Asokoro, Abuja, Nigeria</p>
-        <p class="mt-2 text-sm text-white/75">Phone: +234 706 406 2121</p>
-        <p class="mt-2 text-sm text-white/75">Email: info@ipadev.ng</p>
-        <p class="mt-2 text-sm text-white/75">Alternative Email: margaret.fagboyo@ipadev.ng</p>
+        <p class="mt-5 text-sm leading-7 text-white/75">{{ site_settings.head_office_address|default:"Flat 2B1E Admiralty Estate\nAsokoro, Abuja, Nigeria"|linebreaksbr }}</p>
+        <p class="mt-2 text-sm text-white/75">Phone: {{ site_settings.phone|default:"+234 706 406 2121" }}</p>
+        <p class="mt-2 text-sm text-white/75">Email: {{ site_settings.primary_email|default:"info@ipadev.ng" }}</p>
+        <p class="mt-2 text-sm text-white/75">Alternative Email: {{ site_settings.alternative_email|default:"margaret.fagboyo@ipadev.ng" }}</p>
       </div>
     </div>
     <div class="border-t border-white/10 px-5 py-5 text-center text-xs text-white/55">

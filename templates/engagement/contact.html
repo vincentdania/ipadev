@@ -16,8 +16,8 @@
   <div class="relative mx-auto flex min-h-[520px] max-w-[1280px] items-center px-5 py-24 lg:px-12">
     <div class="max-w-3xl">
       <p class="text-sm font-bold uppercase text-gold">Contact us</p>
-      <h1 class="mt-5 font-display text-5xl font-bold md:text-7xl">Start a strategic conversation</h1>
-      <p class="mt-7 text-lg leading-8 text-white/80">Have questions, feedback, or a partnership idea? Reach out and our team will get back to you as soon as possible.</p>
+      <h1 class="mt-5 font-display text-5xl font-bold md:text-7xl">{{ content.contact_intro.title|default:"Start a strategic conversation" }}</h1>
+      <p class="mt-7 text-lg leading-8 text-white/80">{{ content.contact_intro.body|default:"Have questions, feedback, or a partnership idea? Reach out and our team will get back to you as soon as possible." }}</p>
     </div>
   </div>
 </section>
@@ -27,10 +27,10 @@
     <p class="text-sm font-bold uppercase text-bronze">Contact details</p>
     <h2 class="mt-4 font-display text-4xl font-bold text-primary">IPADEV welcomes serious partners.</h2>
     <div class="mt-10 space-y-6 text-muted">
-      <div><p class="text-sm font-bold uppercase text-primary">Head Office</p><p class="mt-2 leading-7">Flat 2B1E Admiralty Estate<br>Asokoro, Abuja, Nigeria</p></div>
-      <div><p class="text-sm font-bold uppercase text-primary">Phone</p><p class="mt-2">+234 706 406 2121</p></div>
-      <div><p class="text-sm font-bold uppercase text-primary">Email</p><p class="mt-2">info@ipadev.ng</p></div>
-      <div><p class="text-sm font-bold uppercase text-primary">Alternative Email</p><p class="mt-2">margaret.fagboyo@ipadev.ng</p></div>
+      <div><p class="text-sm font-bold uppercase text-primary">Head Office</p><p class="mt-2 leading-7">{{ site_settings.head_office_address|default:"Flat 2B1E Admiralty Estate\nAsokoro, Abuja, Nigeria"|linebreaksbr }}</p></div>
+      <div><p class="text-sm font-bold uppercase text-primary">Phone</p><p class="mt-2">{{ site_settings.phone|default:"+234 706 406 2121" }}</p></div>
+      <div><p class="text-sm font-bold uppercase text-primary">Email</p><p class="mt-2">{{ site_settings.primary_email|default:"info@ipadev.ng" }}</p></div>
+      <div><p class="text-sm font-bold uppercase text-primary">Alternative Email</p><p class="mt-2">{{ site_settings.alternative_email|default:"margaret.fagboyo@ipadev.ng" }}</p></div>
     </div>
   </div>
   <form method="post" class="border border-line bg-white p-6 shadow-ambient md:p-8 lg:col-span-7 lg:col-start-6">

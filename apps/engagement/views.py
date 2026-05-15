@@ -6,6 +6,8 @@ from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.views.generic import FormView
 
+from apps.pages.views import content_map
+
 from .forms import ContactForm, NewsletterForm
 from .recaptcha import verify_recaptcha
 from .tasks import send_contact_notification
@@ -20,6 +22,7 @@ class ContactView(FormView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context["content"] = content_map()
         context["recaptcha_site_key"] = settings.RECAPTCHA_SITE_KEY
         return context
 
