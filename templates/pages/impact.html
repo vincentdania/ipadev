@@ -1,0 +1,51 @@
+{% extends "base/site.html" %}
+{% load static %}
+
+{% block title %}Accountability and Sustainable Impact | IPADEV{% endblock %}
+
+{% block content %}
+<section class="relative min-h-[620px] overflow-hidden bg-primary text-white">
+  <img src="{% static 'img/img3.webp' %}" alt="IPADEV impact and community results" class="absolute inset-0 h-full w-full object-cover opacity-45">
+  <div class="absolute inset-0 bg-gradient-to-b from-primary/75 to-primary"></div>
+  <div class="relative mx-auto flex min-h-[620px] max-w-[1280px] items-center px-5 py-24 lg:px-12">
+    <div class="max-w-4xl">
+      <p class="text-sm font-bold uppercase text-gold">Accountability and sustainable impact</p>
+      <h1 class="mt-5 font-display text-5xl font-bold leading-tight md:text-7xl">Responsible, participatory, and evidence-informed development.</h1>
+      <p class="mt-7 max-w-2xl text-lg leading-8 text-white/80">IPADEV recognizes that trust is fundamental to sustainable development work and meaningful partnerships.</p>
+    </div>
+  </div>
+</section>
+
+<section class="mx-auto max-w-[1280px] px-5 py-24 lg:px-12 lg:py-[120px]">
+  <div class="grid gap-12 lg:grid-cols-12">
+    <div class="lg:col-span-6">
+      <img src="{% static 'img/card-img4.webp' %}" alt="Community action case study" class="h-[520px] w-full object-cover">
+    </div>
+    <div class="flex flex-col justify-center lg:col-span-5 lg:col-start-8">
+      <p class="text-sm font-bold uppercase text-bronze">How IPADEV defines impact</p>
+      <h2 class="mt-4 font-display text-4xl font-bold text-primary">Inclusion that strengthens people, communities, and institutions</h2>
+      <p class="mt-6 text-lg leading-8 text-muted">IPADEV believes accountability goes beyond financial compliance. It also involves being responsive to communities, transparent with stakeholders, responsible in decision-making, open to learning, and committed to delivering meaningful impact.</p>
+      <ul class="mt-8 space-y-4 text-muted">
+        <li class="flex gap-3"><span class="material-symbols-outlined text-gold">check_circle</span>Ethical and transparent programme implementation.</li>
+        <li class="flex gap-3"><span class="material-symbols-outlined text-gold">check_circle</span>Participatory and inclusive decision-making processes.</li>
+        <li class="flex gap-3"><span class="material-symbols-outlined text-gold">check_circle</span>Monitoring, Evaluation, Accountability, and Learning.</li>
+        <li class="flex gap-3"><span class="material-symbols-outlined text-gold">check_circle</span>Evidence-informed programming and adaptive learning.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="bg-primary py-24 text-white lg:py-[120px]">
+  <div class="mx-auto grid max-w-[1280px] gap-10 px-5 lg:grid-cols-12 lg:px-12">
+    <div class="lg:col-span-5">
+      <h2 class="font-display text-4xl font-bold md:text-5xl">Commitment to accountability</h2>
+      <p class="mt-6 text-lg leading-8 text-white/75">IPADEV is committed to maintaining high standards of integrity, transparency, ethical leadership, and responsible stewardship in all operations, programmes, partnerships, and engagements.</p>
+    </div>
+    <div class="grid gap-4 lg:col-span-6 lg:col-start-7">
+      <div class="flex items-center justify-between border border-white/15 bg-white/5 p-6"><span>Responsible financial management and resource stewardship</span><span class="material-symbols-outlined text-gold">account_balance_wallet</span></div>
+      <div class="flex items-center justify-between border border-white/15 bg-white/5 p-6"><span>Timely reporting and stakeholder communication</span><span class="material-symbols-outlined text-gold">fact_check</span></div>
+      <div class="flex items-center justify-between border border-white/15 bg-white/5 p-6"><span>Respect for the dignity, rights, and voices of beneficiaries</span><span class="material-symbols-outlined text-gold">diversity_3</span></div>
+    </div>
+  </div>
+</section>
+{% endblock %}

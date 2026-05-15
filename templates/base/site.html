@@ -1,0 +1,118 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}IPADEV{% endblock %}</title>
+  <meta name="description" content="{% block meta_description %}Inclusive Pathway Development Initiative advances inclusive development, social justice, gender equality, and equitable access to opportunities for vulnerable and underserved populations.{% endblock %}">
+  <link rel="icon" href="{% static 'favicon.ico' %}" sizes="any">
+  <link rel="icon" type="image/png" href="{% static 'favicon.png' %}">
+  <link rel="apple-touch-icon" href="{% static 'favicon.png' %}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&family=Playfair+Display:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            surface: '#fbf9f4',
+            paper: '#f5f3ee',
+            primary: '#012d1d',
+            forest: '#1b4332',
+            gold: '#c5a059',
+            bronze: '#775a19',
+            ink: '#1b1c19',
+            muted: '#414844',
+            line: '#d8d3c7'
+          },
+          fontFamily: {
+            display: ['Playfair Display', 'serif'],
+            sans: ['Plus Jakarta Sans', 'ui-sans-serif', 'system-ui']
+          },
+          boxShadow: {
+            ambient: '0 24px 70px rgba(1, 45, 29, 0.08)'
+          }
+        }
+      }
+    }
+  </script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+  <link rel="stylesheet" href="{% static 'css/site.css' %}">
+  {% block extra_head %}{% endblock %}
+</head>
+<body class="bg-surface font-sans text-ink antialiased selection:bg-gold/30">
+  <header class="sticky top-0 z-40 border-b border-line bg-surface shadow-sm" x-data="{ open: false }">
+    <div class="mx-auto flex max-w-[1280px] items-center justify-between px-5 py-4 lg:px-12">
+      <a href="{% url 'home' %}" class="flex min-w-0 items-center gap-3">
+        <img src="{% static 'img/IPADEV-logo.png' %}" alt="IPADEV logo" class="h-12 w-12 shrink-0 rounded-full object-contain">
+        <span class="max-w-[230px] text-sm font-extrabold leading-tight text-primary">Inclusive Pathway Development Initiative</span>
+      </a>
+      <button class="rounded border border-line px-3 py-2 text-sm font-bold text-primary lg:hidden" type="button" @click="open = !open" aria-label="Toggle navigation">
+        Menu
+      </button>
+      <nav class="hidden items-center gap-6 text-sm font-bold text-muted lg:flex">
+        {% include "base/_nav_links.html" %}
+      </nav>
+      <a class="hidden rounded bg-primary px-5 py-3 text-sm font-bold text-white transition hover:bg-forest xl:inline-flex" href="{% url 'contact' %}">Partner With Us</a>
+    </div>
+    <nav class="border-t border-line px-5 py-4 text-sm font-bold text-muted lg:hidden" x-show="open" x-cloak>
+      <div class="flex flex-col gap-3">
+        {% include "base/_nav_links.html" %}
+      </div>
+    </nav>
+  </header>
+
+  {% if messages %}
+    <div class="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
+      {% for message in messages %}
+        <div class="rounded-md border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800">{{ message }}</div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  {% include "engagement/_newsletter.html" %}
+
+  <footer class="bg-primary text-white">
+    <div class="mx-auto grid max-w-[1280px] gap-10 px-5 py-16 md:grid-cols-[1.4fr_0.8fr_0.8fr_1fr] lg:px-12">
+      <div>
+        <img src="{% static 'img/IPADEV-logo.png' %}" alt="IPADEV" class="h-14 w-14 rounded-full bg-white object-contain p-1">
+        <h2 class="mt-5 max-w-sm font-display text-2xl font-bold">Inclusive Pathway Development Initiative</h2>
+        <p class="mt-4 max-w-md text-sm leading-7 text-white/70">Building inclusive pathways for sustainable development, social justice, and equal opportunity.</p>
+      </div>
+      <div>
+        <h2 class="text-xs font-bold uppercase text-gold">Explore</h2>
+        <div class="mt-5 flex flex-col gap-3 text-sm text-white/75">
+          {% include "base/_nav_links.html" %}
+        </div>
+      </div>
+      <div>
+        <h2 class="text-xs font-bold uppercase text-gold">Resources</h2>
+        <div class="mt-5 flex flex-col gap-3 text-sm text-white/75">
+          <a class="hover:text-gold" href="{% url 'news' %}">Resources</a>
+          <a class="hover:text-gold" href="{% url 'areas_of_focus' %}#accountability">Accountability</a>
+          <a class="hover:text-gold" href="{% url 'get_involved' %}">Partnerships</a>
+          <a class="hover:text-gold" href="{% static 'docs/IPADEV_Capability_Statement.pdf' %}" download>Capability Statement</a>
+        </div>
+      </div>
+      <div>
+        <h2 class="text-xs font-bold uppercase text-gold">Head Office</h2>
+        <p class="mt-5 text-sm leading-7 text-white/75">Flat 2B1E Admiralty Estate<br>Asokoro, Abuja, Nigeria</p>
+        <p class="mt-2 text-sm text-white/75">Phone: +234 706 406 2121</p>
+        <p class="mt-2 text-sm text-white/75">Email: info@ipadev.ng</p>
+        <p class="mt-2 text-sm text-white/75">Alternative Email: margaret.fagboyo@ipadev.ng</p>
+      </div>
+    </div>
+    <div class="border-t border-white/10 px-5 py-5 text-center text-xs text-white/55">
+      &copy; {% now "Y" %} Inclusive Pathway Development Initiative (IPADEV). Building inclusive pathways for sustainable development.
+    </div>
+  </footer>
+</body>
+</html>

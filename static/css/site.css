@@ -1,0 +1,19 @@
+[x-cloak] {
+  display: none !important;
+}
+
+input,
+textarea,
+select {
+  font-weight: 400;
+}
+
+textarea {
+  min-height: 10rem;
+}
+
+.errorlist {
+  margin-top: 0.5rem;
+  color: rgb(185 28 28);
+  font-size: 0.875rem;
+}

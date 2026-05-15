@@ -1,0 +1,142 @@
+{% extends "base/site.html" %}
+{% load static %}
+
+{% block title %}IPADEV | Inclusive Development and Social Justice{% endblock %}
+{% block meta_description %}IPADEV is a Nigerian non-profit organization advancing inclusive development, social justice, gender equality, and equitable access to opportunities.{% endblock %}
+
+{% block content %}
+<section class="relative min-h-[760px] overflow-hidden bg-primary text-white">
+  <img src="{% static 'img/img4.webp' %}" alt="IPADEV community engagement" class="absolute inset-0 h-full w-full object-cover opacity-45">
+  <div class="absolute inset-0 bg-gradient-to-b from-primary/85 via-primary/65 to-primary"></div>
+  <div class="relative mx-auto flex min-h-[760px] max-w-[1280px] items-center px-5 py-24 lg:px-12">
+    <div class="max-w-4xl">
+      <p class="text-sm font-bold uppercase text-gold">Inclusive Pathway Development Initiative</p>
+      <h1 class="mt-6 font-display text-5xl font-bold leading-[1.08] md:text-7xl">Building inclusive pathways for sustainable development.</h1>
+      <p class="mt-7 max-w-2xl text-lg leading-8 text-white/85">IPADEV advances inclusive development, social justice, gender equality, and equitable access to opportunities for vulnerable and underserved populations.</p>
+      <div class="mt-10 flex flex-wrap gap-4">
+        <a class="rounded bg-gold px-6 py-4 text-sm font-extrabold text-primary transition hover:bg-[#fed488]" href="{% url 'contact' %}">Partner With Us</a>
+        <a class="rounded border border-white/45 px-6 py-4 text-sm font-extrabold text-white transition hover:border-gold hover:text-gold" href="{% url 'about' %}">Mission & Vision</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="mx-auto grid max-w-[1280px] gap-12 px-5 py-24 lg:grid-cols-12 lg:px-12 lg:py-[120px]">
+  <div class="lg:col-span-5">
+    <p class="text-sm font-bold uppercase text-bronze">Our Mission</p>
+    <h2 class="mt-4 font-display text-4xl font-bold leading-tight text-primary md:text-5xl">Equal opportunity, social justice, and community empowerment</h2>
+  </div>
+  <div class="space-y-6 text-lg leading-8 text-muted lg:col-span-6 lg:col-start-7">
+    <p>IPADEV was founded from a deep recognition that many individuals and communities remain excluded from the benefits of development, not because they lack potential, but because the systems around them were not intentionally designed to include them.</p>
+    <p>Our mission is to promote equal opportunities, social justice, and community empowerment through inclusive policies, capacity building, and advocacy for societal transformation.</p>
+    <a class="inline-flex items-center border-b border-gold pb-1 text-sm font-extrabold uppercase text-bronze" href="{% url 'about' %}">Read our full mission <span class="material-symbols-outlined ml-2 text-base">arrow_forward</span></a>
+  </div>
+</section>
+
+<section class="bg-paper py-24 lg:py-[120px]">
+  <div class="mx-auto max-w-[1280px] px-5 lg:px-12">
+    <div class="max-w-3xl">
+      <p class="text-sm font-bold uppercase text-bronze">Strategic Focus</p>
+      <h2 class="mt-4 font-display text-4xl font-bold text-primary md:text-5xl">Five pathways for inclusive transformation</h2>
+      <p class="mt-5 text-lg leading-8 text-muted">IPADEV's work is driven by the understanding that sustainable development requires inclusive systems, empowered communities, responsive institutions, and equitable access to opportunities.</p>
+    </div>
+    <div class="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-5">
+      {% for pillar in pillars %}
+        <article class="group border border-line bg-white p-6 transition hover:-translate-y-1 hover:border-gold hover:shadow-ambient">
+          <span class="material-symbols-outlined text-3xl text-bronze">{{ pillar.icon }}</span>
+          <h3 class="mt-5 font-display text-xl font-semibold text-primary">{{ pillar.title }}</h3>
+          <p class="mt-4 text-sm leading-7 text-muted">{{ pillar.description }}</p>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="mx-auto grid max-w-[1280px] gap-12 px-5 py-24 lg:grid-cols-12 lg:px-12 lg:py-[120px]">
+  <div class="lg:col-span-6">
+    <div class="relative">
+      <img src="{% static 'img/img5.webp' %}" alt="Women leaders collaborating at an IPADEV community programme" class="h-[560px] w-full object-cover saturate-[0.95]">
+      <figure class="mx-auto mt-5 max-w-[290px] border border-line bg-white p-3 shadow-ambient sm:absolute sm:bottom-6 sm:right-6 sm:mt-0">
+        <img src="{% static 'img/ipadev-gallery/dr-fagboyo-beneficiary.jpeg' %}" alt="Dr. Margaret Fagboyo engaging with a community beneficiary" class="aspect-[3/2] w-full object-cover">
+        <figcaption class="px-1 pt-3 text-xs font-bold uppercase text-bronze">Community engagement</figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="flex flex-col justify-center lg:col-span-5 lg:col-start-8">
+    <p class="text-sm font-bold uppercase text-bronze">Why IPADEV exists</p>
+    <h2 class="mt-4 font-display text-4xl font-bold leading-tight text-primary md:text-5xl">Turning inclusion gaps into practical pathways</h2>
+    <p class="mt-6 text-lg leading-8 text-muted">Many people remain unheard, underrepresented, or excluded from governance, economic participation, leadership opportunities, and social protection systems. IPADEV exists to strengthen the connection between citizens, institutions, and development processes.</p>
+  </div>
+</section>
+
+<section class="bg-primary py-24 text-white lg:py-[120px]">
+  <div class="mx-auto grid max-w-[1280px] gap-12 px-5 lg:grid-cols-12 lg:px-12">
+    <div class="lg:col-span-5">
+      {% if executive_director.photo %}
+        <img src="{{ executive_director.photo.url }}" alt="{{ executive_director.name }}" class="h-[620px] w-full object-cover">
+      {% else %}
+        <img src="{% static 'img/margaret-fagboyo.jpg' %}" alt="Dr. Margaret Fagboyo" class="h-[620px] w-full object-cover">
+      {% endif %}
+    </div>
+    <div class="flex flex-col justify-center lg:col-span-6 lg:col-start-7">
+      <p class="text-sm font-bold uppercase text-gold">Founder & Executive Director</p>
+      <h2 class="mt-4 font-display text-4xl font-bold md:text-6xl">Dr. Margaret Fagboyo</h2>
+      <blockquote class="mt-6 border-l-2 border-gold pl-6 text-2xl font-semibold leading-10 text-white/90">"Societies thrive when every individual has a fair opportunity to participate, contribute, and succeed."</blockquote>
+      <p class="mt-8 text-lg leading-8 text-white/75">Dr. Fagboyo is a respected development practitioner, governance advocate, and social inclusion expert with decades of experience spanning international development, public sector governance, policy engagement, institutional strengthening, and civic leadership.</p>
+      <a class="mt-10 inline-flex w-fit rounded border border-gold px-6 py-4 text-sm font-extrabold text-gold transition hover:bg-gold hover:text-primary" href="{% url 'team' %}">Full Profile</a>
+    </div>
+  </div>
+</section>
+
+<section class="mx-auto max-w-[1280px] px-5 py-24 lg:px-12 lg:py-[120px]">
+  <div class="grid gap-12 lg:grid-cols-12">
+    <div class="lg:col-span-4">
+      <p class="text-sm font-bold uppercase text-bronze">Organizational strengths</p>
+      <h2 class="mt-4 font-display text-4xl font-bold text-primary md:text-5xl">Connecting policy conversations with community realities</h2>
+    </div>
+    <div class="grid gap-5 md:grid-cols-2 lg:col-span-8">
+      <article class="border border-line bg-white p-8"><span class="material-symbols-outlined text-3xl text-bronze">verified_user</span><h3 class="mt-5 font-display text-2xl font-semibold text-primary">Experienced leadership</h3><p class="mt-3 leading-7 text-muted">Development expertise across governance, public sector engagement, institutional strengthening, and community development.</p></article>
+      <article class="border border-line bg-white p-8"><span class="material-symbols-outlined text-3xl text-bronze">hub</span><h3 class="mt-5 font-display text-2xl font-semibold text-primary">Strategic partnerships</h3><p class="mt-3 leading-7 text-muted">Collaboration with government, civil society, development partners, academia, media, communities, and the private sector.</p></article>
+      <article class="border border-line bg-white p-8"><span class="material-symbols-outlined text-3xl text-bronze">groups</span><h3 class="mt-5 font-display text-2xl font-semibold text-primary">Community-centered approach</h3><p class="mt-3 leading-7 text-muted">Participatory programming that prioritizes listening, inclusion, local ownership, and lived experiences.</p></article>
+      <article class="border border-line bg-white p-8"><span class="material-symbols-outlined text-3xl text-bronze">monitoring</span><h3 class="mt-5 font-display text-2xl font-semibold text-primary">Accountability and learning</h3><p class="mt-3 leading-7 text-muted">Responsible stewardship, evidence-informed programming, transparent reporting, and continuous improvement.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="bg-paper py-24 lg:py-[120px]">
+  <div class="mx-auto max-w-[1280px] px-5 lg:px-12">
+    <div class="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+      <div>
+        <p class="text-sm font-bold uppercase text-bronze">Programme priorities</p>
+        <h2 class="mt-4 font-display text-4xl font-bold text-primary md:text-5xl">Current areas of emphasis</h2>
+      </div>
+      <a class="border-b border-gold pb-1 text-sm font-extrabold uppercase text-bronze" href="{% url 'news' %}">View resources</a>
+    </div>
+    <div class="mt-12 grid gap-6 lg:grid-cols-3">
+      {% for item in news_items %}
+        <article class="border border-line bg-white p-8">
+          <span class="material-symbols-outlined text-3xl text-bronze">{{ item.icon }}</span>
+          <div class="mt-6 flex gap-3 text-xs font-bold uppercase text-bronze"><span>{{ item.category }}</span><span>{{ item.date }}</span></div>
+          <h3 class="mt-4 font-display text-2xl font-semibold text-primary">{{ item.title }}</h3>
+          <p class="mt-4 text-sm leading-7 text-muted">{{ item.summary }}</p>
+          <a class="mt-6 inline-flex items-center text-sm font-extrabold text-bronze" href="{% url 'news' %}">Learn more <span class="material-symbols-outlined ml-2 text-base">open_in_new</span></a>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="mx-auto max-w-[1280px] px-5 py-24 lg:px-12 lg:py-[120px]">
+  <div class="grid gap-8 bg-primary p-8 text-white md:grid-cols-[1fr_auto] md:items-center lg:p-14">
+    <div>
+      <p class="text-sm font-bold uppercase text-gold">Partnership and donor collaboration</p>
+      <h2 class="mt-4 max-w-3xl font-display text-4xl font-bold md:text-5xl">Partner with IPADEV to expand inclusion and equitable opportunity.</h2>
+      <p class="mt-5 max-w-2xl text-white/75">We welcome partnerships grounded in trust, transparency, shared learning, mutual respect, and long-term sustainability.</p>
+    </div>
+    <div class="flex flex-col gap-3 sm:flex-row md:flex-col">
+      <a class="rounded bg-gold px-6 py-4 text-center text-sm font-extrabold text-primary" href="{% url 'contact' %}">Become a Partner</a>
+      <a class="rounded border border-white/40 px-6 py-4 text-center text-sm font-extrabold text-white" href="{% url 'areas_of_focus' %}#accountability">Accountability</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

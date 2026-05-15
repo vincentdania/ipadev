@@ -1,0 +1,37 @@
+{% extends "base/site.html" %}
+{% load static %}
+
+{% block title %}Partner With IPADEV | Donor Collaboration{% endblock %}
+
+{% block content %}
+<section class="relative min-h-[620px] overflow-hidden bg-primary text-white">
+  <img src="{% static 'img/card-img2.webp' %}" alt="Partnership and donor collaboration" class="absolute inset-0 h-full w-full object-cover opacity-45">
+  <div class="absolute inset-0 bg-gradient-to-b from-primary/80 to-primary"></div>
+  <div class="relative mx-auto flex min-h-[620px] max-w-[1280px] items-center px-5 py-24 lg:px-12">
+    <div class="max-w-4xl">
+      <p class="text-sm font-bold uppercase text-gold">Partnership and donor collaboration</p>
+      <h1 class="mt-5 font-display text-5xl font-bold leading-tight md:text-7xl">Collaboration for inclusive and sustainable development.</h1>
+      <p class="mt-7 max-w-2xl text-lg leading-8 text-white/80">IPADEV welcomes partnerships that strengthen collective impact, expand opportunities for underserved populations, improve programme effectiveness, and contribute to inclusive development outcomes.</p>
+    </div>
+  </div>
+</section>
+
+<section class="mx-auto max-w-[1280px] px-5 py-24 lg:px-12 lg:py-[120px]">
+  <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+    <article class="border border-line bg-white p-8"><span class="material-symbols-outlined text-3xl text-bronze">volunteer_activism</span><h2 class="mt-5 font-display text-2xl font-semibold text-primary">Development partners and donor agencies</h2><p class="mt-4 leading-7 text-muted">Programme implementation, research, institutional strengthening, advocacy, technical assistance, and sustainable development interventions.</p></article>
+    <article class="border border-line bg-white p-8"><span class="material-symbols-outlined text-3xl text-bronze">account_balance</span><h2 class="mt-5 font-display text-2xl font-semibold text-primary">Government institutions and policymakers</h2><p class="mt-4 leading-7 text-muted">Inclusive governance, policy dialogue, citizen participation, social inclusion, and institutional effectiveness.</p></article>
+    <article class="border border-line bg-white p-8"><span class="material-symbols-outlined text-3xl text-bronze">groups</span><h2 class="mt-5 font-display text-2xl font-semibold text-primary">Civil society organizations and networks</h2><p class="mt-4 leading-7 text-muted">Advocacy, programme delivery, knowledge sharing, community engagement, and collective impact.</p></article>
+    <article class="border border-line bg-white p-8"><span class="material-symbols-outlined text-3xl text-bronze">science</span><h2 class="mt-5 font-display text-2xl font-semibold text-primary">Academic and research institutions</h2><p class="mt-4 leading-7 text-muted">Research, evidence generation, learning, innovation, policy analysis, and knowledge exchange on development and inclusion.</p></article>
+    <article class="border border-line bg-white p-8"><span class="material-symbols-outlined text-3xl text-bronze">diversity_3</span><h2 class="mt-5 font-display text-2xl font-semibold text-primary">Community and grassroots structures</h2><p class="mt-4 leading-7 text-muted">Local ownership, community participation, resilience building, and sustainable grassroots impact.</p></article>
+    <article class="border border-line bg-white p-8"><span class="material-symbols-outlined text-3xl text-bronze">campaign</span><h2 class="mt-5 font-display text-2xl font-semibold text-primary">Private sector, media, and advocacy platforms</h2><p class="mt-4 leading-7 text-muted">Inclusive economic opportunities, social investment, public engagement, inclusive narratives, and accountable governance.</p></article>
+  </div>
+  <div class="mt-16 bg-primary p-8 text-white lg:p-14">
+    <h2 class="max-w-3xl font-display text-4xl font-bold md:text-5xl">Build a partnership grounded in trust and long-term sustainability.</h2>
+    <p class="mt-5 max-w-2xl text-white/75">IPADEV is open to partnerships at local, national, regional, and international levels with institutions and actors committed to inclusion, social justice, accountable governance, and community empowerment.</p>
+    <div class="mt-8 flex flex-wrap gap-4">
+      <a class="inline-flex items-center rounded bg-gold px-6 py-4 text-sm font-extrabold text-primary" href="{% static 'docs/IPADEV_Capability_Statement.pdf' %}" download>Download Capability Statement <span class="material-symbols-outlined ml-2 text-base">download</span></a>
+      <a class="inline-flex items-center rounded border border-white/40 px-6 py-4 text-sm font-extrabold text-white" href="{% url 'contact' %}">Start a Conversation</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

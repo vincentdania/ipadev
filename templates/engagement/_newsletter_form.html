@@ -1,0 +1,5 @@
+<form class="flex w-full max-w-md gap-2" method="post" action="{% url 'newsletter_signup' %}" hx-post="{% url 'newsletter_signup' %}" hx-target="this" hx-swap="outerHTML">
+  {% csrf_token %}
+  <input class="min-w-0 flex-1 rounded border border-line bg-white px-4 py-3 text-sm" type="email" name="email" placeholder="Email address" required>
+  <button class="rounded bg-primary px-5 py-3 text-sm font-bold text-white hover:bg-forest" type="submit">Subscribe</button>
+</form>

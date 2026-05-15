@@ -1,0 +1,62 @@
+{% extends "base/site.html" %}
+{% load static %}
+
+{% block title %}Contact IPADEV | Partnership and Collaboration{% endblock %}
+{% block meta_description %}Contact IPADEV for partnerships, donor collaboration, volunteer opportunities, advocacy work, and development programme enquiries.{% endblock %}
+{% block extra_head %}
+  {% if recaptcha_site_key %}
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+<section class="relative min-h-[520px] overflow-hidden bg-primary text-white">
+  <img src="{% static 'img/card-img6.webp' %}" alt="Contact IPADEV" class="absolute inset-0 h-full w-full object-cover opacity-40">
+  <div class="absolute inset-0 bg-gradient-to-b from-primary/75 to-primary"></div>
+  <div class="relative mx-auto flex min-h-[520px] max-w-[1280px] items-center px-5 py-24 lg:px-12">
+    <div class="max-w-3xl">
+      <p class="text-sm font-bold uppercase text-gold">Contact us</p>
+      <h1 class="mt-5 font-display text-5xl font-bold md:text-7xl">Start a strategic conversation</h1>
+      <p class="mt-7 text-lg leading-8 text-white/80">Have questions, feedback, or a partnership idea? Reach out and our team will get back to you as soon as possible.</p>
+    </div>
+  </div>
+</section>
+
+<section class="mx-auto grid max-w-[1280px] gap-12 px-5 py-24 lg:grid-cols-12 lg:px-12 lg:py-[120px]">
+  <div class="lg:col-span-4">
+    <p class="text-sm font-bold uppercase text-bronze">Contact details</p>
+    <h2 class="mt-4 font-display text-4xl font-bold text-primary">IPADEV welcomes serious partners.</h2>
+    <div class="mt-10 space-y-6 text-muted">
+      <div><p class="text-sm font-bold uppercase text-primary">Head Office</p><p class="mt-2 leading-7">Flat 2B1E Admiralty Estate<br>Asokoro, Abuja, Nigeria</p></div>
+      <div><p class="text-sm font-bold uppercase text-primary">Phone</p><p class="mt-2">+234 706 406 2121</p></div>
+      <div><p class="text-sm font-bold uppercase text-primary">Email</p><p class="mt-2">info@ipadev.ng</p></div>
+      <div><p class="text-sm font-bold uppercase text-primary">Alternative Email</p><p class="mt-2">margaret.fagboyo@ipadev.ng</p></div>
+    </div>
+  </div>
+  <form method="post" class="border border-line bg-white p-6 shadow-ambient md:p-8 lg:col-span-7 lg:col-start-6">
+    {% csrf_token %}
+    <div class="grid gap-6 md:grid-cols-2">
+      <label class="block text-sm font-bold uppercase text-primary">Name {{ form.name }}</label>
+      <label class="block text-sm font-bold uppercase text-primary">Email {{ form.email }}</label>
+      <label class="block text-sm font-bold uppercase text-primary">Phone {{ form.phone }}</label>
+      <label class="block text-sm font-bold uppercase text-primary">Subject {{ form.subject }}</label>
+      <label class="block text-sm font-bold uppercase text-primary md:col-span-2">Message {{ form.message }}</label>
+    </div>
+    {% if recaptcha_site_key %}
+      <div class="mt-6">
+        <div class="g-recaptcha" data-sitekey="{{ recaptcha_site_key }}"></div>
+      </div>
+    {% endif %}
+    {% if form.non_field_errors %}
+      <div class="mt-5 space-y-1 text-sm font-bold text-red-700">
+        {% for error in form.non_field_errors %}
+          <p>{{ error }}</p>
+        {% endfor %}
+      </div>
+    {% elif form.errors %}
+      <p class="mt-5 text-sm font-bold text-red-700">Please correct the highlighted fields.</p>
+    {% endif %}
+    <button class="mt-8 rounded bg-primary px-6 py-4 text-sm font-extrabold text-white transition hover:bg-forest" type="submit">Send Message</button>
+  </form>
+</section>
+{% endblock %}

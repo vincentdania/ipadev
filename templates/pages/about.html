@@ -1,0 +1,73 @@
+{% extends "base/site.html" %}
+{% load static %}
+
+{% block title %}About IPADEV | Inclusive Development and Social Justice{% endblock %}
+{% block meta_description %}Learn about IPADEV's mission, vision, values, and commitment to inclusive development, social justice, gender equality, and equitable opportunity.{% endblock %}
+
+{% block content %}
+<section class="relative min-h-[620px] overflow-hidden bg-primary text-white">
+  <img src="{% static 'img/card-img1.webp' %}" alt="IPADEV institutional development work" class="absolute inset-0 h-full w-full object-cover opacity-45">
+  <div class="absolute inset-0 bg-gradient-to-b from-primary/80 to-primary"></div>
+  <div class="relative mx-auto flex min-h-[620px] max-w-[1280px] items-center px-5 py-24 lg:px-12">
+    <div class="max-w-4xl">
+      <p class="text-sm font-bold uppercase text-gold">Organisational profile</p>
+      <h1 class="mt-5 font-display text-5xl font-bold leading-tight md:text-7xl">Building inclusive pathways for equal opportunity.</h1>
+      <p class="mt-7 max-w-2xl text-lg leading-8 text-white/80">IPADEV is a Nigerian non-profit organization established to advance inclusive development, social justice, gender equality, and equitable access to opportunities for vulnerable and underserved populations.</p>
+    </div>
+  </div>
+</section>
+
+<section class="mx-auto grid max-w-[1280px] gap-12 px-5 py-24 lg:grid-cols-12 lg:px-12 lg:py-[120px]">
+  <div class="lg:col-span-5">
+    <h2 class="font-display text-4xl font-bold text-primary md:text-5xl">Our story: practical pathways for inclusion</h2>
+    <div class="mt-8 flex items-center gap-4">
+      <div class="h-px w-14 bg-gold"></div>
+      <span class="text-sm font-bold uppercase text-bronze">Rooted in lived realities</span>
+    </div>
+  </div>
+  <div class="space-y-6 text-lg leading-8 text-muted lg:col-span-6 lg:col-start-7">
+    <p>IPADEV was founded from a deep recognition that many individuals and communities remain excluded from the benefits of development, not because they lack potential, but because the systems around them were not intentionally designed to include them.</p>
+    <p>The organization works to create practical and sustainable pathways for inclusion by strengthening community voices, supporting citizen participation, promoting accountable governance, expanding opportunities for women and marginalized groups, and building institutional and community capacity for long-term social change.</p>
+    <p>IPADEV believes development becomes meaningful only when it is inclusive, participatory, and rooted in the lived realities of the people it seeks to serve.</p>
+  </div>
+</section>
+
+<section class="bg-primary py-24 text-white lg:py-[120px]">
+  <div class="mx-auto grid max-w-[1280px] gap-8 px-5 md:grid-cols-3 lg:px-12">
+    <div class="bg-forest p-8 md:col-span-2 lg:p-12">
+      <span class="material-symbols-outlined text-4xl text-gold">flag</span>
+      <h2 class="mt-6 font-display text-4xl font-bold">Our Mission</h2>
+      <p class="mt-6 max-w-2xl text-lg leading-8 text-white/75">To promote equal opportunities, social justice, and community empowerment through inclusive policies, capacity building, and advocacy for societal transformation.</p>
+    </div>
+    <div class="bg-gold p-8 text-primary lg:p-12">
+      <span class="material-symbols-outlined text-4xl">visibility</span>
+      <h2 class="mt-6 font-display text-4xl font-bold">Our Vision</h2>
+      <p class="mt-6 leading-8">A just and inclusive society where every individual, regardless of gender, background, or status, has equal opportunities to thrive and contribute to sustainable development.</p>
+    </div>
+  </div>
+</section>
+
+<section class="mx-auto max-w-[1280px] px-5 py-24 lg:px-12 lg:py-[120px]">
+  <div class="text-center">
+    <h2 class="font-display text-4xl font-bold text-primary md:text-5xl">Our Core Values</h2>
+    <div class="mx-auto mt-5 h-1 w-24 bg-gold"></div>
+  </div>
+  <div class="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+    {% for title, body in values %}
+      <article class="border-b-2 border-transparent p-6 transition hover:border-gold">
+        <span class="material-symbols-outlined text-3xl text-bronze">verified_user</span>
+        <h3 class="mt-5 font-display text-2xl font-semibold text-primary">{{ title }}</h3>
+        <p class="mt-4 text-sm leading-7 text-muted">{{ body }}</p>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="mx-auto max-w-[1280px] px-5 pb-24 lg:px-12 lg:pb-[120px]">
+  <div class="mx-auto grid max-w-5xl gap-5 sm:grid-cols-3">
+    <img src="{% static 'img/ipadev-gallery/ipadev-launch-presentation.jpeg' %}" alt="IPADEV launch presentation and guests" class="mx-auto aspect-[4/3] w-full max-w-[320px] object-cover">
+    <img src="{% static 'img/ipadev-gallery/official-launch-media-briefing.jpeg' %}" alt="IPADEV official launch media briefing" class="mx-auto aspect-[4/3] w-full max-w-[320px] object-cover">
+    <img src="{% static 'img/ipadev-gallery/ipadev-launch-group.jpeg' %}" alt="Participants at the IPADEV official launch" class="mx-auto aspect-[4/3] w-full max-w-[320px] object-cover">
+  </div>
+</section>
+{% endblock %}

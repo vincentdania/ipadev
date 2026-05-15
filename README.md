@@ -1,26 +1,79 @@
-# Inclusive Pathway Development Initiative (IPADEV) Website
+# IPADEV Website
 
-This project is the official website for the Inclusive Pathway Development Initiative (IPADEV), a non-profit organization dedicated to promoting equal opportunities, social justice, and community empowerment in Nigeria.
+Official website for the Inclusive Pathway Development Initiative (IPADEV).
 
-## Project Overview
-The website serves as a digital platform to showcase IPADEV’s mission, vision, core values, areas of focus, and ways for individuals and organizations to get involved. It provides information about the organization’s work, success stories, and offers visitors a way to contact or subscribe for updates.
+The project is now a server-rendered Django website with a premium donor-facing UI inspired by the Google Stitch redesign.
 
-## Key Features
-- **Modern, Responsive Design:** Optimized for both desktop and mobile devices, ensuring accessibility and usability for all visitors.
-- **Hero and About Sections:** Highlight IPADEV’s mission, vision, and core values with engaging visuals and clear messaging.
-- **Areas of Focus:** Detailed information about the organization’s strategic objectives and focus areas.
-- **Team Page:** Showcases the Board of Trustees and Executive Director with comprehensive profiles, photos, and organizational vision.
-- **Get Involved Page:** Outlines various ways supporters can participate, including volunteering, partnership, and donations.
-- **Contact Form:** Allows visitors to reach out directly to the IPADEV team for inquiries, feedback, or collaboration opportunities.
-- **Newsletter Signup:** Enables users to subscribe for updates and success stories via email.
-- **Footer with Social Links:** Provides quick access to IPADEV’s social media profiles and essential navigation links.
-- **Optimized Images:** All images are compressed for fast loading and improved performance.
+## Stack
 
-## Technologies Used
-- **React:** For building the user interface and managing component-based architecture.
-- **CSS (custom, responsive):** For styling and layout, with a focus on mobile-first design.
-- **PHP:** Used for backend form handling (contact and newsletter forms) via a simple mail script compatible with cPanel hosting.
-- **Sharp:** Utilized for automated image compression to enhance site speed.
+- Python 3.12
+- Django 4.2
+- Django Templates
+- Tailwind via CDN
+- HTMX
+- Alpine.js
+- PostgreSQL
+- Celery + Redis
+- django-allauth
+- Django REST Framework
+- django-environ
+- django-storages + boto3
+- Gunicorn
+- Pillow
+- ReportLab
 
-## Purpose
-The IPADEV website is designed to inform, engage, and inspire action among stakeholders, partners, and the general public. It reflects the organization’s commitment to transparency, inclusivity, and positive social impact.
+## Local Setup
+
+```bash
+python3.12 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements/dev.txt
+cp .env.example .env
+python manage.py migrate
+python manage.py seed_site
+python manage.py createsuperuser
+python manage.py runserver
+```
+
+Then open:
+
+```text
+http://127.0.0.1:8000/
+```
+
+## Main Routes
+
+- `/`
+- `/about/`
+- `/areas-of-focus/`
+- `/team/`
+- `/impact/`
+- `/news/`
+- `/get-involved/`
+- `/contact/`
+- `/admin/`
+- `/api/`
+
+## Deployment Notes
+
+- Use PostgreSQL for `DATABASE_URL`.
+- Use Redis for `REDIS_URL`.
+- Run web with Gunicorn:
+
+```bash
+gunicorn config.wsgi:application
+```
+
+- Run background jobs with Celery:
+
+```bash
+celery -A config worker --loglevel=info
+```
+
+- Run `collectstatic` before serving static files:
+
+```bash
+python manage.py collectstatic --noinput
+```
+
+- If using S3-compatible media storage, set `USE_S3=True` and provide the AWS/S3 environment variables in `.env`.

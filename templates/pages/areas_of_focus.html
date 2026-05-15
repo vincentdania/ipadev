@@ -1,0 +1,82 @@
+{% extends "base/site.html" %}
+{% load static %}
+
+{% block title %}Strategic Focus | IPADEV{% endblock %}
+{% block meta_description %}Explore IPADEV's strategic focus areas: gender equality, inclusive governance, social justice, institutional strengthening, and community resilience.{% endblock %}
+
+{% block content %}
+<section class="relative min-h-[620px] overflow-hidden bg-primary text-white">
+  <img src="{% static 'img/card-img5.webp' %}" alt="Community leaders discussing development plans" class="absolute inset-0 h-full w-full object-cover opacity-45">
+  <div class="absolute inset-0 bg-gradient-to-b from-primary/70 to-primary"></div>
+  <div class="relative mx-auto flex min-h-[620px] max-w-[1280px] items-center justify-center px-5 py-24 text-center lg:px-12">
+    <div class="max-w-4xl">
+      <p class="text-sm font-bold uppercase text-gold">Strategic focus areas</p>
+      <h1 class="mt-5 font-display text-5xl font-bold md:text-7xl">Our Strategic Focus</h1>
+      <p class="mx-auto mt-7 max-w-2xl text-lg leading-8 text-white/80">IPADEV addresses systemic barriers through advocacy, community engagement, institutional strengthening, policy influence, leadership development, and strategic partnerships.</p>
+    </div>
+  </div>
+</section>
+
+<section class="mx-auto max-w-[1280px] px-5 py-24 lg:px-12 lg:py-[120px]">
+  <div class="grid gap-10 lg:grid-cols-12">
+    <div class="lg:col-span-4">
+      <h2 class="font-display text-4xl font-bold text-primary">The five pathways that guide our work</h2>
+      <p class="mt-5 leading-8 text-muted">Our strategic focus areas reflect both the realities faced by vulnerable populations and the pathways required to build more inclusive and resilient communities.</p>
+      <div class="mt-8 h-1 w-24 bg-gold"></div>
+    </div>
+    <div class="grid gap-6 md:grid-cols-2 lg:col-span-8">
+      {% for pillar in pillars %}
+        <article class="border border-line bg-white p-8 transition hover:border-gold hover:shadow-ambient">
+          <span class="material-symbols-outlined text-4xl text-bronze">{{ pillar.icon }}</span>
+          <h3 class="mt-6 font-display text-2xl font-semibold text-primary">{{ pillar.title }}</h3>
+          <p class="mt-4 leading-7 text-muted">{{ pillar.description }}</p>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section id="accountability" class="bg-primary py-24 text-white lg:py-[120px]">
+  <div class="mx-auto grid max-w-[1280px] gap-12 px-5 lg:grid-cols-12 lg:px-12">
+    <div class="lg:col-span-5">
+      <p class="text-sm font-bold uppercase text-gold">Accountability and sustainable impact</p>
+      <h2 class="mt-4 font-display text-4xl font-bold md:text-5xl">Responsible, participatory, and evidence-informed development</h2>
+      <p class="mt-6 text-lg leading-8 text-white/75">IPADEV recognizes that trust is fundamental to sustainable development work and meaningful partnerships. Accountability goes beyond financial compliance; it also involves being responsive to communities, transparent with stakeholders, responsible in decision-making, open to learning, and committed to meaningful impact.</p>
+    </div>
+    <div class="grid gap-4 lg:col-span-6 lg:col-start-7">
+      <div class="flex items-center justify-between gap-6 border border-white/15 bg-white/5 p-6"><span>Ethical and transparent programme implementation</span><span class="material-symbols-outlined shrink-0 text-gold">verified_user</span></div>
+      <div class="flex items-center justify-between gap-6 border border-white/15 bg-white/5 p-6"><span>Responsible financial management and resource stewardship</span><span class="material-symbols-outlined shrink-0 text-gold">account_balance_wallet</span></div>
+      <div class="flex items-center justify-between gap-6 border border-white/15 bg-white/5 p-6"><span>Participatory and inclusive decision-making processes</span><span class="material-symbols-outlined shrink-0 text-gold">groups</span></div>
+      <div class="flex items-center justify-between gap-6 border border-white/15 bg-white/5 p-6"><span>Monitoring, Evaluation, Accountability, and Learning</span><span class="material-symbols-outlined shrink-0 text-gold">monitoring</span></div>
+      <div class="flex items-center justify-between gap-6 border border-white/15 bg-white/5 p-6"><span>Timely reporting and stakeholder communication</span><span class="material-symbols-outlined shrink-0 text-gold">fact_check</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-paper py-24 lg:py-[120px]">
+  <div class="mx-auto max-w-[1280px] px-5 lg:px-12">
+    <div class="grid gap-12 lg:grid-cols-2">
+      <div>
+        <p class="text-sm font-bold uppercase text-bronze">Background</p>
+        <h2 class="mt-4 font-display text-4xl font-bold text-primary">Why the work matters</h2>
+        <div class="mt-6 space-y-5 text-lg leading-8 text-muted">
+          {{ content.areas_background.body|default:"IPADEV's work is driven by the understanding that sustainable development requires inclusive systems, empowered communities, responsive institutions, and equitable access to opportunities. The organization adopts an integrated approach that combines advocacy, community engagement, institutional strengthening, policy influence, leadership development, and strategic partnerships to address systemic barriers that limit participation and human development."|linebreaks }}
+        </div>
+      </div>
+      <div>
+        <p class="text-sm font-bold uppercase text-bronze">Partnership priorities</p>
+        <ul class="mt-6 space-y-5">
+          {% for objective in strategic_objectives %}
+            <li class="flex gap-4 text-base leading-8 text-muted"><span class="material-symbols-outlined mt-1 text-gold">check_circle</span>{{ objective }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="mt-16 grid gap-4 md:grid-cols-3">
+      {% for approach in approaches %}
+        <div class="border border-line bg-white px-5 py-4 text-sm font-bold text-primary">{{ approach }}</div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

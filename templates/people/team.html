@@ -1,0 +1,99 @@
+{% extends "base/site.html" %}
+{% load static %}
+
+{% block title %}Leadership and Governance | IPADEV{% endblock %}
+{% block meta_description %}Meet Dr. Margaret Fagboyo, Founder and Executive Director of IPADEV, and the governance leaders guiding inclusive development work.{% endblock %}
+
+{% block content %}
+<section class="bg-primary text-white">
+  <div class="mx-auto grid min-h-[720px] max-w-[1280px] gap-12 px-5 py-24 lg:grid-cols-12 lg:px-12">
+    <div class="flex flex-col justify-center lg:col-span-6">
+      <p class="text-sm font-bold uppercase text-gold">Founder & Executive Director</p>
+      <h1 class="mt-5 font-display text-5xl font-bold leading-tight md:text-7xl">Dr. Margaret Fagboyo</h1>
+      <p class="mt-6 max-w-xl text-2xl leading-10 text-white/85">A respected development practitioner, governance advocate, and social inclusion expert committed to equitable development and accountable institutions.</p>
+    </div>
+    <div class="flex items-end lg:col-span-5 lg:col-start-8">
+      {% if executive_director.photo %}
+        <img src="{{ executive_director.photo.url }}" alt="{{ executive_director.name }}" class="h-[620px] w-full object-cover">
+      {% else %}
+        <img src="{% static 'img/margaret-fagboyo.jpg' %}" alt="Dr. Margaret Fagboyo" class="h-[620px] w-full object-cover">
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<section class="mx-auto grid max-w-[1280px] gap-12 px-5 py-24 lg:grid-cols-12 lg:px-12 lg:py-[120px]">
+  <div class="lg:col-span-5">
+    <p class="text-sm font-bold uppercase text-bronze">Founder profile</p>
+    <h2 class="mt-4 font-display text-4xl font-bold text-primary md:text-5xl">Creating practical pathways for inclusion and participation</h2>
+  </div>
+  <div class="space-y-6 text-lg leading-8 text-muted lg:col-span-6 lg:col-start-7">
+    <p>{{ executive_director.bio|default:"Dr. Margaret Fagboyo is a respected development practitioner, governance advocate, and social inclusion expert with decades of experience spanning international development, public sector governance, policy engagement, institutional strengthening, and civic leadership." }}</p>
+    <p>Her professional journey reflects a lifelong commitment to advancing equitable development, strengthening institutions, promoting inclusive governance, and creating opportunities for vulnerable and underserved populations.</p>
+    <p>Her vision for IPADEV was shaped by years of engagement with communities, institutions, policymakers, and development actors. Through these experiences, she observed that many people remain excluded not because they lack potential, but because they lack access, representation, support systems, and opportunities.</p>
+    <p>{{ executive_director.message|default:"Under her leadership, IPADEV is being positioned as a values-driven organization committed to ethical leadership, inclusive development, institutional accountability, strategic partnerships, and measurable social impact." }}</p>
+  </div>
+</section>
+
+<section class="bg-primary py-24 text-white lg:py-[120px]">
+  <div class="mx-auto max-w-[1280px] px-5 lg:px-12">
+    <div class="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+      <div class="max-w-3xl">
+        <p class="text-sm font-bold uppercase text-gold">IPADEV in pictures</p>
+        <h2 class="mt-4 font-display text-4xl font-bold md:text-5xl">Leadership, launch, and community engagement</h2>
+        <p class="mt-5 text-lg leading-8 text-white/75">Moments from IPADEV's official launch and community-facing engagement work.</p>
+      </div>
+    </div>
+    <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      <figure class="group mx-auto w-full max-w-[320px] overflow-hidden bg-white/5">
+        <img src="{% static 'img/ipadev-gallery/dr-fagboyo-beneficiary.jpeg' %}" alt="Dr. Margaret Fagboyo with a community beneficiary" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-105">
+        <figcaption class="border border-white/10 border-t-0 px-5 py-4 text-sm text-white/75">Community engagement</figcaption>
+      </figure>
+      <figure class="group mx-auto w-full max-w-[320px] overflow-hidden bg-white/5">
+        <img src="{% static 'img/ipadev-gallery/ipadev-launch-presentation.jpeg' %}" alt="Guests at the official launch of IPADEV" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-105">
+        <figcaption class="border border-white/10 border-t-0 px-5 py-4 text-sm text-white/75">Official launch</figcaption>
+      </figure>
+      <figure class="group mx-auto w-full max-w-[320px] overflow-hidden bg-white/5">
+        <img src="{% static 'img/ipadev-gallery/official-launch-media-briefing.jpeg' %}" alt="IPADEV official launch media briefing banner" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-105">
+        <figcaption class="border border-white/10 border-t-0 px-5 py-4 text-sm text-white/75">Media briefing</figcaption>
+      </figure>
+      <figure class="group mx-auto w-full max-w-[320px] overflow-hidden bg-white/5">
+        <img src="{% static 'img/ipadev-gallery/ipadev-launch-group.jpeg' %}" alt="Group photograph from the IPADEV launch" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-105">
+        <figcaption class="border border-white/10 border-t-0 px-5 py-4 text-sm text-white/75">Launch participants</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="bg-paper py-24 lg:py-[120px]">
+  <div class="mx-auto max-w-[1280px] px-5 lg:px-12">
+    <div class="max-w-3xl">
+      <p class="text-sm font-bold uppercase text-bronze">Governance</p>
+      <h2 class="mt-4 font-display text-4xl font-bold text-primary md:text-5xl">Board of Trustees</h2>
+      <p class="mt-5 text-lg leading-8 text-muted">Experienced professionals guiding IPADEV's governance, accountability, strategic direction, and commitment to responsible stewardship.</p>
+    </div>
+    <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {% for member in board_members %}
+        <article class="group bg-white p-6">
+          <div class="mx-auto h-44 w-44 overflow-hidden rounded-full bg-paper ring-1 ring-line">
+            {% if member.photo %}
+              <img src="{{ member.photo.url }}" alt="{{ member.name }}" class="h-full w-full object-cover transition duration-500 group-hover:scale-105">
+            {% elif member.photo_static_path %}
+              <img src="{% static member.photo_static_path %}" alt="{{ member.name }}" class="h-full w-full object-cover transition duration-500 group-hover:scale-105">
+            {% else %}
+              <img src="{% static 'img/placeholder-avatar.svg' %}" alt="{{ member.name }}" class="h-full w-full object-cover transition duration-500 group-hover:scale-105">
+            {% endif %}
+          </div>
+          <div class="mt-6 border-t border-line pt-6 text-center">
+            <h3 class="font-display text-2xl font-semibold text-primary">{{ member.name }}</h3>
+            <p class="mt-1 text-sm font-bold uppercase text-bronze">{{ member.role }}</p>
+            <p class="mt-4 text-sm leading-7 text-muted">{{ member.bio }}</p>
+          </div>
+        </article>
+      {% empty %}
+        <p class="text-muted">Team members will appear here once added in the admin.</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}
