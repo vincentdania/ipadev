@@ -46,10 +46,9 @@
 </head>
 <body class="bg-surface font-sans text-ink antialiased selection:bg-gold/30">
   <header class="sticky top-0 z-40 border-b border-line bg-surface shadow-sm" x-data="{ open: false }">
-    <div class="mx-auto flex max-w-[1280px] items-center justify-between px-5 py-4 lg:px-12">
-      <a href="{% url 'home' %}" class="flex min-w-0 items-center gap-3">
-        <img src="{% static 'img/IPADEV-logo.png' %}" alt="IPADEV logo" class="h-12 w-12 shrink-0 rounded-full object-contain">
-        <span class="max-w-[230px] text-sm font-extrabold leading-tight text-primary">Inclusive Pathway Development Initiative</span>
+    <div class="mx-auto flex max-w-[1280px] items-center justify-between gap-4 px-5 py-3 lg:px-12">
+      <a href="{% url 'home' %}" class="flex min-w-0 items-center">
+        <img src="{% static 'img/ipadev-brand-logo.png' %}" alt="Inclusive Pathway Development Initiative (IPADEV)" class="h-auto max-h-14 w-auto max-w-[190px] object-contain sm:max-w-[250px] lg:max-w-[330px]">
       </a>
       <button class="rounded border border-line px-3 py-2 text-sm font-bold text-primary lg:hidden" type="button" @click="open = !open" aria-label="Toggle navigation">
         Menu
@@ -83,8 +82,7 @@
   <footer class="bg-primary text-white">
     <div class="mx-auto grid max-w-[1280px] gap-10 px-5 py-16 md:grid-cols-[1.4fr_0.8fr_0.8fr_1fr] lg:px-12">
       <div>
-        <img src="{% static 'img/IPADEV-logo.png' %}" alt="IPADEV" class="h-14 w-14 rounded-full bg-white object-contain p-1">
-        <h2 class="mt-5 max-w-sm font-display text-2xl font-bold">Inclusive Pathway Development Initiative</h2>
+        <img src="{% static 'img/ipadev-brand-logo.png' %}" alt="Inclusive Pathway Development Initiative (IPADEV)" class="h-auto max-h-20 w-auto max-w-[280px] object-contain">
         <p class="mt-4 max-w-md text-sm leading-7 text-white/70">Building inclusive pathways for sustainable development, social justice, and equal opportunity.</p>
       </div>
       <div>

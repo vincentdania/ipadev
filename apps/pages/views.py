@@ -2,27 +2,7 @@ from django.views.generic import TemplateView
 
 from apps.people.models import TeamMember
 
-from .models import AreaOfFocus, PageContent
-
-STRATEGIC_OBJECTIVES = [
-    "Promote inclusion and equitable access to opportunities.",
-    "Strengthen institutions and community systems.",
-    "Advance gender equality and social justice.",
-    "Support leadership and capacity development.",
-    "Encourage citizen participation and accountability.",
-    "Foster innovation and sustainable development solutions.",
-    "Deliver measurable and lasting impact within communities.",
-]
-
-APPROACHES = [
-    "Policy advocacy and systems engagement",
-    "Community mobilization and citizen engagement",
-    "Capacity strengthening and leadership development",
-    "Strategic partnerships and collaboration",
-    "Research, learning, and evidence generation",
-    "Inclusive programme design and implementation",
-    "Accountability and sustainable impact",
-]
+from .models import AreaOfFocus, ContentListItem, GalleryImage, PageContent
 
 FOCUS_PILLARS = [
     {
@@ -52,32 +32,12 @@ FOCUS_PILLARS = [
     },
 ]
 
-NEWS_ITEMS = [
-    {
-        "category": "Focus Area",
-        "date": "Gender Equality",
-        "title": "Women's leadership and political participation",
-        "summary": "IPADEV supports leadership development, mentorship, and gender-responsive systems that strengthen women's voices in decision-making spaces.",
-        "icon": "female",
-    },
-    {
-        "category": "Focus Area",
-        "date": "Active Citizenship",
-        "title": "Civic education and citizen engagement",
-        "summary": "The organization promotes public dialogue, stakeholder engagement, citizen feedback mechanisms, and democratic participation.",
-        "icon": "campaign",
-    },
-    {
-        "category": "Focus Area",
-        "date": "Institutional Strengthening",
-        "title": "Capacity building and organizational resilience",
-        "summary": "IPADEV provides practical support for leadership systems, programme effectiveness, accountability, and long-term sustainability.",
-        "icon": "hub",
-    },
-]
-
 def content_map():
     return {item.key: item for item in PageContent.objects.filter(is_published=True)}
+
+
+def list_items(section):
+    return ContentListItem.objects.filter(section=section, is_published=True)
 
 
 class HomeView(TemplateView):
@@ -88,14 +48,9 @@ class HomeView(TemplateView):
         context["content"] = content_map()
         context["areas"] = AreaOfFocus.objects.filter(is_published=True)[:4]
         context["pillars"] = FOCUS_PILLARS
-        context["news_items"] = NEWS_ITEMS
+        context["news_items"] = list_items("resource_items")[:3]
         context["executive_director"] = (
             TeamMember.objects.filter(is_active=True, is_executive_director=True).first()
-        )
-        context["quote"] = (
-            "Societies thrive when every individual, regardless of gender, social status, "
-            "disability, age, or background, has a fair opportunity to participate, "
-            "contribute, and succeed."
         )
         return context
 
@@ -106,15 +61,7 @@ class AboutView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["content"] = content_map()
-        context["values"] = [
-            ("Inclusivity", "Creating spaces, systems, and opportunities that promote equal participation and leave no one behind."),
-            ("Integrity", "Upholding honesty, transparency, ethical conduct, and responsible stewardship in all engagements."),
-            ("Empowerment", "Equipping people with the knowledge, skills, confidence, and opportunities to shape their own futures."),
-            ("Social Justice", "Challenging systemic inequalities, exclusion, discrimination, and harmful social norms."),
-            ("Collaboration", "Working with communities, governments, civil society, development partners, academia, media, and the private sector."),
-            ("Accountability", "Committing to measurable impact, responsible use of resources, continuous learning, and transparent reporting."),
-            ("Respect", "Valuing the dignity, perspectives, experiences, and contributions of every individual and community."),
-        ]
+        context["values"] = list_items("about_values")
         return context
 
 
@@ -126,8 +73,8 @@ class AreasOfFocusView(TemplateView):
         context["content"] = content_map()
         context["areas"] = AreaOfFocus.objects.filter(is_published=True)
         context["pillars"] = FOCUS_PILLARS
-        context["strategic_objectives"] = STRATEGIC_OBJECTIVES
-        context["approaches"] = APPROACHES
+        context["strategic_objectives"] = list_items("strategic_objectives")
+        context["approaches"] = list_items("approaches")
         return context
 
 
@@ -156,5 +103,6 @@ class NewsView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["content"] = content_map()
-        context["news_items"] = NEWS_ITEMS
+        context["news_items"] = list_items("resource_items")
+        context["gallery_images"] = GalleryImage.objects.filter(is_published=True)
         return context

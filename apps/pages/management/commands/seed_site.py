@@ -1,7 +1,7 @@
 from django.core.management.base import BaseCommand
 
 from apps.core.models import SiteSetting
-from apps.pages.models import AreaOfFocus, PageContent
+from apps.pages.models import AreaOfFocus, ContentListItem, GalleryImage, PageContent
 from apps.people.models import TeamMember
 
 
@@ -139,6 +139,103 @@ class Command(BaseCommand):
             AreaOfFocus.objects.update_or_create(
                 title=title,
                 defaults={"description": description, "sort_order": index, "is_published": True},
+            )
+
+        list_items = {
+            "about_values": [
+                ("Inclusivity", "Creating spaces, systems, and opportunities that promote equal participation and leave no one behind.", "verified_user", ""),
+                ("Integrity", "Upholding honesty, transparency, ethical conduct, and responsible stewardship in all engagements.", "gpp_good", ""),
+                ("Empowerment", "Equipping people with the knowledge, skills, confidence, and opportunities to shape their own futures.", "diversity_1", ""),
+                ("Social Justice", "Challenging systemic inequalities, exclusion, discrimination, and harmful social norms.", "balance", ""),
+                ("Collaboration", "Working with communities, governments, civil society, development partners, academia, media, and the private sector.", "handshake", ""),
+                ("Accountability", "Committing to measurable impact, responsible use of resources, continuous learning, and transparent reporting.", "fact_check", ""),
+                ("Respect", "Valuing the dignity, perspectives, experiences, and contributions of every individual and community.", "volunteer_activism", ""),
+            ],
+            "strategic_objectives": [
+                ("Promote inclusion and equitable access to opportunities.", "", "check_circle", ""),
+                ("Strengthen institutions and community systems.", "", "check_circle", ""),
+                ("Advance gender equality and social justice.", "", "check_circle", ""),
+                ("Support leadership and capacity development.", "", "check_circle", ""),
+                ("Encourage citizen participation and accountability.", "", "check_circle", ""),
+                ("Foster innovation and sustainable development solutions.", "", "check_circle", ""),
+                ("Deliver measurable and lasting impact within communities.", "", "check_circle", ""),
+            ],
+            "approaches": [
+                ("Policy advocacy and systems engagement", "", "", ""),
+                ("Community mobilization and citizen engagement", "", "", ""),
+                ("Capacity strengthening and leadership development", "", "", ""),
+                ("Strategic partnerships and collaboration", "", "", ""),
+                ("Research, learning, and evidence generation", "", "", ""),
+                ("Inclusive programme design and implementation", "", "", ""),
+                ("Accountability and sustainable impact", "", "", ""),
+            ],
+            "resource_items": [
+                (
+                    "Women's leadership and political participation",
+                    "IPADEV supports leadership development, mentorship, and gender-responsive systems that strengthen women's voices in decision-making spaces.",
+                    "female",
+                    "Focus Area · Gender Equality",
+                ),
+                (
+                    "Civic education and citizen engagement",
+                    "The organization promotes public dialogue, stakeholder engagement, citizen feedback mechanisms, and democratic participation.",
+                    "campaign",
+                    "Focus Area · Active Citizenship",
+                ),
+                (
+                    "Capacity building and organizational resilience",
+                    "IPADEV provides practical support for leadership systems, programme effectiveness, accountability, and long-term sustainability.",
+                    "hub",
+                    "Focus Area · Institutional Strengthening",
+                ),
+            ],
+        }
+        for section, items in list_items.items():
+            for index, (title, body, icon, eyebrow) in enumerate(items, start=1):
+                ContentListItem.objects.update_or_create(
+                    section=section,
+                    title=title,
+                    defaults={
+                        "body": body,
+                        "icon_name": icon,
+                        "eyebrow": eyebrow,
+                        "sort_order": index,
+                        "is_published": True,
+                    },
+                )
+
+        gallery_images = [
+            (
+                "Dr. Margaret Fagboyo with a community beneficiary",
+                "Community engagement",
+                "img/ipadev-gallery/dr-fagboyo-beneficiary.jpeg",
+            ),
+            (
+                "Guests at the official launch of IPADEV",
+                "Official launch",
+                "img/ipadev-gallery/ipadev-launch-presentation.jpeg",
+            ),
+            (
+                "IPADEV official launch media briefing banner",
+                "Media briefing",
+                "img/ipadev-gallery/official-launch-media-briefing.jpeg",
+            ),
+            (
+                "Group photograph from the IPADEV launch",
+                "Launch participants",
+                "img/ipadev-gallery/ipadev-launch-group.jpeg",
+            ),
+        ]
+        for index, (title, caption, static_path) in enumerate(gallery_images, start=1):
+            GalleryImage.objects.update_or_create(
+                title=title,
+                defaults={
+                    "caption": caption,
+                    "alt_text": title,
+                    "static_path": static_path,
+                    "sort_order": index,
+                    "is_published": True,
+                },
             )
 
         TeamMember.objects.update_or_create(

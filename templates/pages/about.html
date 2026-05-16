@@ -51,11 +51,11 @@
     <div class="mx-auto mt-5 h-1 w-24 bg-gold"></div>
   </div>
   <div class="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-    {% for title, body in values %}
+    {% for item in values %}
       <article class="border-b-2 border-transparent p-6 transition hover:border-gold">
-        <span class="material-symbols-outlined text-3xl text-bronze">verified_user</span>
-        <h3 class="mt-5 font-display text-2xl font-semibold text-primary">{{ title }}</h3>
-        <p class="mt-4 text-sm leading-7 text-muted">{{ body }}</p>
+        <span class="material-symbols-outlined text-3xl text-bronze">{{ item.icon_name|default:"verified_user" }}</span>
+        <h3 class="mt-5 font-display text-2xl font-semibold text-primary">{{ item.title }}</h3>
+        <p class="mt-4 text-sm leading-7 text-muted">{{ item.body }}</p>
       </article>
     {% endfor %}
   </div>

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import AreaOfFocus, PageContent
+from .models import AreaOfFocus, ContentListItem, GalleryImage, PageContent
 
 
 @admin.register(PageContent)
@@ -31,5 +31,39 @@ class AreaOfFocusAdmin(admin.ModelAdmin):
     search_fields = ("title", "description")
     fieldsets = (
         ("Focus area content", {"fields": ("title", "description", "icon_name")}),
+        ("Publishing", {"fields": ("sort_order", "is_published")}),
+    )
+
+
+@admin.register(ContentListItem)
+class ContentListItemAdmin(admin.ModelAdmin):
+    list_display = ("section", "title", "eyebrow", "sort_order", "is_published")
+    list_filter = ("section", "is_published")
+    list_editable = ("sort_order", "is_published")
+    search_fields = ("section", "eyebrow", "title", "body", "icon_name")
+    fieldsets = (
+        (
+            "Website list item",
+            {
+                "fields": ("section", "eyebrow", "title", "body", "icon_name"),
+                "description": (
+                    "Use section to place this item in the matching repeatable website area. "
+                    "Common sections include about_values, strategic_objectives, approaches, "
+                    "and resource_items."
+                ),
+            },
+        ),
+        ("Publishing", {"fields": ("sort_order", "is_published")}),
+    )
+
+
+@admin.register(GalleryImage)
+class GalleryImageAdmin(admin.ModelAdmin):
+    list_display = ("title", "caption", "sort_order", "is_published")
+    list_filter = ("is_published",)
+    list_editable = ("sort_order", "is_published")
+    search_fields = ("title", "caption", "alt_text", "static_path")
+    fieldsets = (
+        ("Image content", {"fields": ("title", "caption", "alt_text", "image", "static_path")}),
         ("Publishing", {"fields": ("sort_order", "is_published")}),
     )

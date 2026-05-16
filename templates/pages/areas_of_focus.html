@@ -67,14 +67,14 @@
         <p class="text-sm font-bold uppercase text-bronze">Partnership priorities</p>
         <ul class="mt-6 space-y-5">
           {% for objective in strategic_objectives %}
-            <li class="flex gap-4 text-base leading-8 text-muted"><span class="material-symbols-outlined mt-1 text-gold">check_circle</span>{{ objective }}</li>
+            <li class="flex gap-4 text-base leading-8 text-muted"><span class="material-symbols-outlined mt-1 text-gold">{{ objective.icon_name|default:"check_circle" }}</span>{{ objective.title }}</li>
           {% endfor %}
         </ul>
       </div>
     </div>
     <div class="mt-16 grid gap-4 md:grid-cols-3">
       {% for approach in approaches %}
-        <div class="border border-line bg-white px-5 py-4 text-sm font-bold text-primary">{{ approach }}</div>
+        <div class="border border-line bg-white px-5 py-4 text-sm font-bold text-primary">{{ approach.title }}</div>
       {% endfor %}
     </div>
   </div>

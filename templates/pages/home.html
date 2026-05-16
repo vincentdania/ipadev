@@ -114,10 +114,10 @@
     <div class="mt-12 grid gap-6 lg:grid-cols-3">
       {% for item in news_items %}
         <article class="border border-line bg-white p-8">
-          <span class="material-symbols-outlined text-3xl text-bronze">{{ item.icon }}</span>
-          <div class="mt-6 flex gap-3 text-xs font-bold uppercase text-bronze"><span>{{ item.category }}</span><span>{{ item.date }}</span></div>
+          <span class="material-symbols-outlined text-3xl text-bronze">{{ item.icon_name }}</span>
+          <p class="mt-6 text-xs font-bold uppercase text-bronze">{{ item.eyebrow }}</p>
           <h3 class="mt-4 font-display text-2xl font-semibold text-primary">{{ item.title }}</h3>
-          <p class="mt-4 text-sm leading-7 text-muted">{{ item.summary }}</p>
+          <p class="mt-4 text-sm leading-7 text-muted">{{ item.body }}</p>
           <a class="mt-6 inline-flex items-center text-sm font-extrabold text-bronze" href="{% url 'news' %}">Learn more <span class="material-symbols-outlined ml-2 text-base">open_in_new</span></a>
         </article>
       {% endfor %}

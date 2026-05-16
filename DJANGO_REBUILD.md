@@ -4,7 +4,7 @@ The legacy React, PHP, OctoberCMS, and Strapi artifacts have been removed. Djang
 
 ## First Deployment Checklist
 
-1. Create a Python 3.12 environment.
+1. Create a Python 3.9.23 environment.
 2. Install dependencies:
 
 ```bash
