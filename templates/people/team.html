@@ -16,7 +16,7 @@
       {% if executive_director.photo %}
         <img src="{{ executive_director.photo.url }}" alt="{{ executive_director.name }}" class="h-[620px] w-full object-cover">
       {% else %}
-        <img src="{% static 'img/margaret-fagboyo.jpg' %}" alt="Dr. Margaret Fagboyo" class="h-[620px] w-full object-cover">
+        <img src="{% static 'img/margaret-fagboyo-transparent.png' %}" alt="Dr. Margaret Fagboyo" class="h-[620px] w-full object-contain object-bottom">
       {% endif %}
     </div>
   </div>
