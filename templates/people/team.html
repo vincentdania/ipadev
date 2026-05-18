@@ -6,17 +6,17 @@
 
 {% block content %}
 <section class="bg-primary text-white">
-  <div class="mx-auto grid min-h-[720px] max-w-[1280px] gap-12 px-5 py-24 lg:grid-cols-12 lg:px-12">
+  <div class="mx-auto grid min-h-[680px] max-w-[1280px] items-center gap-10 px-5 py-20 lg:grid-cols-12 lg:px-12 lg:py-24">
     <div class="flex flex-col justify-center lg:col-span-6">
       <p class="text-sm font-bold uppercase text-gold">Founder & Executive Director</p>
       <h1 class="mt-5 font-display text-5xl font-bold leading-tight md:text-7xl">Dr. Margaret Fagboyo</h1>
       <p class="mt-6 max-w-xl text-2xl leading-10 text-white/85">A respected development practitioner, governance advocate, and social inclusion expert committed to equitable development and accountable institutions.</p>
     </div>
-    <div class="flex items-end lg:col-span-5 lg:col-start-8">
+    <div class="flex justify-center lg:col-span-5 lg:col-start-8 lg:justify-end">
       {% if executive_director.photo %}
-        <img src="{{ executive_director.photo.url }}" alt="{{ executive_director.name }}" class="h-[620px] w-full object-cover">
+        <img src="{{ executive_director.photo.url }}" alt="{{ executive_director.name }}" class="h-[560px] w-full object-cover">
       {% else %}
-        <img src="{% static 'img/margaret-fagboyo-transparent.png' %}" alt="Dr. Margaret Fagboyo" class="h-[620px] w-full object-contain object-bottom">
+        <img src="{% static 'img/margaret-fagboyo-transparent.png' %}" alt="Dr. Margaret Fagboyo" class="h-auto max-h-[560px] w-full max-w-[560px] object-contain object-center">
       {% endif %}
     </div>
   </div>

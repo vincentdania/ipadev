@@ -68,13 +68,13 @@
   </div>
 </section>
 
-<section class="bg-primary py-24 text-white lg:py-[120px]">
-  <div class="mx-auto grid max-w-[1280px] gap-12 px-5 lg:grid-cols-12 lg:px-12">
-    <div class="lg:col-span-5">
+<section class="bg-primary py-20 text-white lg:py-24">
+  <div class="mx-auto grid max-w-[1280px] items-center gap-10 px-5 lg:grid-cols-12 lg:px-12">
+    <div class="flex justify-center lg:col-span-5 lg:justify-start">
       {% if executive_director.photo %}
-        <img src="{{ executive_director.photo.url }}" alt="{{ executive_director.name }}" class="h-[620px] w-full object-cover">
+        <img src="{{ executive_director.photo.url }}" alt="{{ executive_director.name }}" class="h-[560px] w-full object-cover">
       {% else %}
-        <img src="{% static 'img/margaret-fagboyo-transparent.png' %}" alt="Dr. Margaret Fagboyo" class="h-[620px] w-full object-contain object-bottom">
+        <img src="{% static 'img/margaret-fagboyo-transparent.png' %}" alt="Dr. Margaret Fagboyo" class="h-auto max-h-[560px] w-full max-w-[520px] object-contain object-center">
       {% endif %}
     </div>
     <div class="flex flex-col justify-center lg:col-span-6 lg:col-start-7">
