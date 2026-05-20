@@ -10,7 +10,12 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         site_settings = {
-            "head_office_address": "Flat 2B1E Admiralty Estate\nAsokoro, Abuja, Nigeria",
+            "head_office_address": (
+                "Abuja Office: Suite D06 KENUJ O2 Mall, Opposite Summit Bible Church "
+                "Kaura District\n\n"
+                "Plot 1, Glory Land Community, after Emirate Hotel, Ajebamidele, "
+                "Ado-Ekiti, Ekiti State"
+            ),
             "phone": "+234 706 406 2121",
             "primary_email": "info@ipadev.ng",
             "alternative_email": "margaret.fagboyo@ipadev.ng",

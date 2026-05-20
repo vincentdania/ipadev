@@ -1,5 +1,7 @@
 from django.db import models
 from django.urls import reverse
+from django.utils import timezone
+from django.utils.text import slugify
 
 
 class PageContent(models.Model):
@@ -79,3 +81,55 @@ class GalleryImage(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class BlogPost(models.Model):
+    class Status(models.TextChoices):
+        DRAFT = "draft", "Draft"
+        PUBLISHED = "published", "Published"
+
+    title = models.CharField(max_length=220)
+    slug = models.SlugField(
+        unique=True,
+        blank=True,
+        help_text="Leave blank to generate automatically from the title.",
+    )
+    excerpt = models.TextField(
+        blank=True,
+        help_text="Short summary shown on the blog listing page.",
+    )
+    body = models.TextField(help_text="Main blog content. Paragraph breaks are preserved.")
+    featured_image = models.ImageField(upload_to="blog/", blank=True)
+    author_name = models.CharField(max_length=120, default="IPADEV")
+    published_at = models.DateTimeField(default=timezone.now)
+    status = models.CharField(
+        max_length=20,
+        choices=Status.choices,
+        default=Status.DRAFT,
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["-published_at"]
+
+    def __str__(self):
+        return self.title
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            base_slug = slugify(self.title) or "blog-post"
+            slug = base_slug
+            index = 2
+            while BlogPost.objects.filter(slug=slug).exclude(pk=self.pk).exists():
+                slug = f"{base_slug}-{index}"
+                index += 1
+            self.slug = slug
+        super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse("blog_detail", kwargs={"slug": self.slug})
+
+    @property
+    def is_published(self):
+        return self.status == self.Status.PUBLISHED and self.published_at <= timezone.now()

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import AreaOfFocus, ContentListItem, GalleryImage, PageContent
+from .models import AreaOfFocus, BlogPost, ContentListItem, GalleryImage, PageContent
 
 
 @admin.register(PageContent)
@@ -66,4 +66,31 @@ class GalleryImageAdmin(admin.ModelAdmin):
     fieldsets = (
         ("Image content", {"fields": ("title", "caption", "alt_text", "image", "static_path")}),
         ("Publishing", {"fields": ("sort_order", "is_published")}),
+    )
+
+
+@admin.register(BlogPost)
+class BlogPostAdmin(admin.ModelAdmin):
+    list_display = ("title", "author_name", "status", "published_at", "updated_at")
+    list_filter = ("status", "published_at", "author_name")
+    search_fields = ("title", "excerpt", "body", "author_name")
+    prepopulated_fields = {"slug": ("title",)}
+    readonly_fields = ("created_at", "updated_at")
+    date_hierarchy = "published_at"
+    fieldsets = (
+        (
+            "Blog post",
+            {
+                "fields": (
+                    "title",
+                    "slug",
+                    "excerpt",
+                    "body",
+                    "featured_image",
+                    "author_name",
+                )
+            },
+        ),
+        ("Publishing", {"fields": ("status", "published_at")}),
+        ("System", {"fields": ("created_at", "updated_at")}),
     )

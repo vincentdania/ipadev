@@ -1,8 +1,9 @@
-from django.views.generic import TemplateView
+from django.utils import timezone
+from django.views.generic import DetailView, ListView, TemplateView
 
 from apps.people.models import TeamMember
 
-from .models import AreaOfFocus, ContentListItem, GalleryImage, PageContent
+from .models import AreaOfFocus, BlogPost, ContentListItem, GalleryImage, PageContent
 
 FOCUS_PILLARS = [
     {
@@ -106,3 +107,28 @@ class NewsView(TemplateView):
         context["news_items"] = list_items("resource_items")
         context["gallery_images"] = GalleryImage.objects.filter(is_published=True)
         return context
+
+
+class BlogListView(ListView):
+    model = BlogPost
+    template_name = "pages/blog_list.html"
+    context_object_name = "posts"
+    paginate_by = 9
+
+    def get_queryset(self):
+        return BlogPost.objects.filter(
+            status=BlogPost.Status.PUBLISHED,
+            published_at__lte=timezone.now(),
+        )
+
+
+class BlogDetailView(DetailView):
+    model = BlogPost
+    template_name = "pages/blog_detail.html"
+    context_object_name = "post"
+
+    def get_queryset(self):
+        return BlogPost.objects.filter(
+            status=BlogPost.Status.PUBLISHED,
+            published_at__lte=timezone.now(),
+        )

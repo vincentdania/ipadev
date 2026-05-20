@@ -13,15 +13,23 @@
 <section class="bg-paper py-24 lg:py-[120px]">
   <div class="mx-auto max-w-[1280px] px-5 lg:px-12">
     <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
-      <article class="bg-primary p-8 text-white lg:p-12">
-        <p class="text-sm font-bold uppercase text-gold">Capability statement</p>
-        <h2 class="mt-5 font-display text-4xl font-bold">Inclusive pathways for sustainable development</h2>
-        <p class="mt-6 text-lg leading-8 text-white/75">IPADEV's capability statement sets out the organization's profile, mission, values, strategic focus areas, development approach, target beneficiaries, and partnership opportunities.</p>
-        <div class="mt-8 flex flex-wrap gap-4">
-          <a class="inline-flex items-center rounded bg-gold px-5 py-3 text-sm font-extrabold text-primary" href="{% static 'docs/IPADEV_Capability_Statement.pdf' %}" download>Download capability statement <span class="material-symbols-outlined ml-2 text-base">download</span></a>
-          <a class="inline-flex items-center px-1 py-3 text-sm font-extrabold text-gold" href="{% url 'contact' %}">Request collaboration information <span class="material-symbols-outlined ml-2 text-base">arrow_right_alt</span></a>
-        </div>
-      </article>
+      <div class="grid gap-6">
+        <article class="bg-primary p-8 text-white lg:p-12">
+          <p class="text-sm font-bold uppercase text-gold">Capability statement</p>
+          <h2 class="mt-5 font-display text-4xl font-bold">Inclusive pathways for sustainable development</h2>
+          <p class="mt-6 text-lg leading-8 text-white/75">IPADEV's capability statement sets out the organization's profile, mission, values, strategic focus areas, development approach, target beneficiaries, and partnership opportunities.</p>
+          <div class="mt-8 flex flex-wrap gap-4">
+            <a class="inline-flex items-center rounded bg-gold px-5 py-3 text-sm font-extrabold text-primary" href="{% static 'docs/IPADEV_Capability_Statement.pdf' %}" download>Download capability statement <span class="material-symbols-outlined ml-2 text-base">download</span></a>
+            <a class="inline-flex items-center px-1 py-3 text-sm font-extrabold text-gold" href="{% url 'contact' %}">Request collaboration information <span class="material-symbols-outlined ml-2 text-base">arrow_right_alt</span></a>
+          </div>
+        </article>
+        <article class="border border-line bg-white p-8 lg:p-10">
+          <p class="text-sm font-bold uppercase text-bronze">Policy resource</p>
+          <h2 class="mt-4 font-display text-3xl font-bold text-primary">Understanding the Special Seats Bill</h2>
+          <p class="mt-5 text-base leading-7 text-muted">A resource by Dr. Margaret Fagboyo explaining the Special Seats Bill and its relevance to women’s political representation and inclusive governance.</p>
+          <a class="mt-7 inline-flex items-center rounded bg-primary px-5 py-3 text-sm font-extrabold text-white" href="{% static 'docs/Understanding_the_Special_Seats_Bill_by_Dr_Margaret_Fagboyo.pdf' %}" download>Download Special Seats Bill resource <span class="material-symbols-outlined ml-2 text-base">download</span></a>
+        </article>
+      </div>
       <img src="{% static 'img/img3.webp' %}" alt="IPADEV policy workshop and insights" class="h-full min-h-[420px] w-full object-cover">
     </div>
     <h2 class="mt-20 font-display text-3xl font-bold text-primary">Programme priorities</h2>

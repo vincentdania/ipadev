@@ -9,4 +9,6 @@ urlpatterns = [
     path("get-involved/", views.GetInvolvedView.as_view(), name="get_involved"),
     path("impact/", views.ImpactView.as_view(), name="impact"),
     path("news/", views.NewsView.as_view(), name="news"),
+    path("blog/", views.BlogListView.as_view(), name="blog_list"),
+    path("blog/<slug:slug>/", views.BlogDetailView.as_view(), name="blog_detail"),
 ]

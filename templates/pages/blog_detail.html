@@ -1,0 +1,35 @@
+{% extends "base/site.html" %}
+
+{% block title %}{{ post.title }} | IPADEV Blog{% endblock %}
+{% block meta_description %}{{ post.excerpt|default:post.body|truncatewords:24 }}{% endblock %}
+
+{% block content %}
+<article>
+  <header class="bg-primary text-white">
+    <div class="mx-auto max-w-[980px] px-5 py-24 lg:px-12 lg:py-[120px]">
+      <p class="text-sm font-bold uppercase text-gold">{{ post.published_at|date:"F j, Y" }} · {{ post.author_name }}</p>
+      <h1 class="mt-5 font-display text-5xl font-bold leading-tight md:text-7xl">{{ post.title }}</h1>
+      {% if post.excerpt %}
+        <p class="mt-7 max-w-3xl text-xl leading-9 text-white/80">{{ post.excerpt }}</p>
+      {% endif %}
+    </div>
+  </header>
+
+  {% if post.featured_image %}
+    <div class="bg-paper">
+      <div class="mx-auto max-w-[980px] px-5 pt-12 lg:px-12">
+        <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" class="aspect-[16/9] w-full object-cover">
+      </div>
+    </div>
+  {% endif %}
+
+  <section class="bg-paper">
+    <div class="mx-auto max-w-[980px] px-5 py-16 lg:px-12 lg:py-24">
+      <div class="space-y-6 bg-white p-7 text-lg leading-8 text-muted md:p-10">
+        {{ post.body|linebreaks }}
+      </div>
+      <a class="mt-10 inline-flex items-center text-sm font-extrabold uppercase text-bronze" href="{% url 'blog_list' %}"><span class="material-symbols-outlined mr-2 text-base">arrow_back</span>Back to blog</a>
+    </div>
+  </section>
+</article>
+{% endblock %}
