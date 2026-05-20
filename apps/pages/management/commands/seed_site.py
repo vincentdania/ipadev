@@ -13,7 +13,7 @@ class Command(BaseCommand):
             "head_office_address": (
                 "Abuja Office: Suite D06 KENUJ O2 Mall , Opposite Summit Bible Church "
                 "Kaura District\n\n"
-                "Plot 1, Glory Land Community, after Emirate Hotel, Ajebamidele, "
+                "Ekiti Office: Plot 1, Glory Land Community, after Emirate Hotel, Ajebamidele, "
                 "Ado-Ekiti, Ekiti State"
             ),
             "phone": "+234 706 406 2121",
