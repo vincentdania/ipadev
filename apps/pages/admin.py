@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import AreaOfFocus, BlogPost, ContentListItem, GalleryImage, PageContent
+from .models import AreaOfFocus, BlogPost, BlogPostImage, ContentListItem, GalleryImage, PageContent
 
 
 @admin.register(PageContent)
@@ -69,8 +69,15 @@ class GalleryImageAdmin(admin.ModelAdmin):
     )
 
 
+class BlogPostImageInline(admin.TabularInline):
+    model = BlogPostImage
+    extra = 1
+    fields = ("caption", "alt_text", "image", "static_path", "sort_order")
+
+
 @admin.register(BlogPost)
 class BlogPostAdmin(admin.ModelAdmin):
+    inlines = (BlogPostImageInline,)
     list_display = ("title", "author_name", "status", "published_at", "updated_at")
     list_filter = ("status", "published_at", "author_name")
     search_fields = ("title", "excerpt", "body", "author_name")
@@ -87,6 +94,7 @@ class BlogPostAdmin(admin.ModelAdmin):
                     "excerpt",
                     "body",
                     "featured_image",
+                    "featured_image_static_path",
                     "author_name",
                 )
             },

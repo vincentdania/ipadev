@@ -100,6 +100,11 @@ class BlogPost(models.Model):
     )
     body = models.TextField(help_text="Main blog content. Paragraph breaks are preserved.")
     featured_image = models.ImageField(upload_to="blog/", blank=True)
+    featured_image_static_path = models.CharField(
+        max_length=220,
+        blank=True,
+        help_text="Optional static image path for bundled blog images.",
+    )
     author_name = models.CharField(max_length=120, default="IPADEV")
     published_at = models.DateTimeField(default=timezone.now)
     status = models.CharField(
@@ -133,3 +138,22 @@ class BlogPost(models.Model):
     @property
     def is_published(self):
         return self.status == self.Status.PUBLISHED and self.published_at <= timezone.now()
+
+
+class BlogPostImage(models.Model):
+    post = models.ForeignKey(BlogPost, on_delete=models.CASCADE, related_name="gallery_images")
+    caption = models.CharField(max_length=180, blank=True)
+    alt_text = models.CharField(max_length=220, blank=True)
+    image = models.ImageField(upload_to="blog/gallery/", blank=True)
+    static_path = models.CharField(
+        max_length=220,
+        blank=True,
+        help_text="Optional static image path for bundled blog gallery images.",
+    )
+    sort_order = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ["sort_order", "id"]
+
+    def __str__(self):
+        return self.caption or self.alt_text or f"Image for {self.post}"
